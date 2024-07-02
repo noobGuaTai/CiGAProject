@@ -71,5 +71,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-/Assets/GameResoureces/Text/VonwaonBitmap-16px.asset
-/Assets/GameResoureces/Text/VonwaonBitmap-16px.asset.meta
+/Assets/Resources/Text/VonwaonBitmap-16px.asset
+/Assets/Resources/Text/VonwaonBitmap-16px.asset.meta

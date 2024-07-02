@@ -7,17 +7,45 @@ public class MainPageManager : MonoBehaviour
 {
     public GameObject gameSettingsCanvas;
     public GameObject sliderBGM;
+    public Dictionary<string, AudioClip> soundClip;
 
     private AudioSource audioSource;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        
+        StartCoroutine(LoadBGM());
     }
 
     void Update()
     {
         audioSource.volume = sliderBGM.GetComponent<Slider>().value;
+    }
+
+    IEnumerator LoadBGM()
+    {
+        yield return null;
+        soundClip = new Dictionary<string, AudioClip>();
+        AudioClip[] clips = Resources.LoadAll<AudioClip>("sound/BackgroundMusic");
+
+        foreach (AudioClip clip in clips)
+        {
+            if (!soundClip.ContainsKey(clip.name))
+            {
+                soundClip[clip.name] = clip;
+            }
+            else
+            {
+                Debug.LogWarning("Duplicate effect prefab name found in 'Prefabs/Effects': " + clip.name);
+            }
+        }
+    }
+
+    public void ChangeBGM(AudioClip ac)
+    {
+        audioSource.clip = ac;
+        // audioSource.Play();
     }
 
     public void OpenSettings()

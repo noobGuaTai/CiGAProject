@@ -2172,7 +2172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9984a0108467e34a9f795506f366a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSettingCanvas: {fileID: 72326859}
+  gameSettingsCanvas: {fileID: 0}
   sliderBGM: {fileID: 827758725}
 --- !u!1 &1668139474
 GameObject:

@@ -1,0 +1,55 @@
+{
+    "FileVersion": "2.0.0",
+    "EnableAddressable": true,
+    "LocationToLower": false,
+    "IncludeAssetGUID": false,
+    "OutputNameStyle": 0,
+    "BuildPipeline": "BuiltinBuildPipeline",
+    "PackageName": "DefaultPackage",
+    "PackageVersion": "Simulate",
+    "AssetList": [
+        {
+            "Address": "mousePointer",
+            "AssetPath": "Assets/GameResoureces/MousePointer/mousePointer.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "Action1 - Tony Longworth",
+            "AssetPath": "Assets/GameResoureces/Sound/Background/Action1 - Tony Longworth.wav",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        },
+        {
+            "Address": "Advert1 - Tony Longworth",
+            "AssetPath": "Assets/GameResoureces/Sound/Background/Advert1 - Tony Longworth.wav",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "assets_gameresoureces_mousepointer.bundle",
+            "UnityCRC": 0,
+            "FileHash": "c76203ffa9ecfd19008890ea0e8559b6",
+            "FileCRC": "00000000",
+            "FileSize": 4561,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "assets_gameresoureces_sound_background.bundle",
+            "UnityCRC": 0,
+            "FileHash": "551e9222c57e6c7fcea70972aa2c8d68",
+            "FileCRC": "00000000",
+            "FileSize": 93854972,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        }
+    ]
+}
