@@ -37,15 +37,15 @@ public class MainPageManager : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Duplicate effect prefab name found in 'Prefabs/Effects': " + clip.name);
+                Debug.LogWarning("Duplicate effect prefab name found in 'sound/BackgroundMusic': " + clip.name);
             }
         }
     }
 
-    public void ChangeBGM(AudioClip ac)
+    public void ChangeBGM(string clipName)
     {
-        audioSource.clip = ac;
-        // audioSource.Play();
+        audioSource.clip = soundClip[clipName];
+        audioSource.Play();
     }
 
     public void OpenSettings()
