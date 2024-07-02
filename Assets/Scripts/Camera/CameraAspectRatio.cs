@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CameraAspectRatio : MonoBehaviour
 {
-    // 目标宽高比
     public float targetAspect = 16.0f / 9.0f;
 
     void Update()
@@ -12,9 +11,7 @@ public class CameraAspectRatio : MonoBehaviour
 
     void SetAspectRatio()
     {
-        // 当前屏幕宽高比
         float windowAspect = (float)Screen.width / (float)Screen.height;
-        // 缩放比例
         float scaleHeight = windowAspect / targetAspect;
 
         Camera camera = GetComponent<Camera>();
@@ -46,7 +43,6 @@ public class CameraAspectRatio : MonoBehaviour
     }
     void OnPreRender()
     {
-        //窗口化中拉伸窗口时等比例缩放以保持16:9
         float currentAspect = System.Convert.ToSingle((double)Screen.width / Screen.height);
         if (currentAspect > Camera.main.aspect)
         {
