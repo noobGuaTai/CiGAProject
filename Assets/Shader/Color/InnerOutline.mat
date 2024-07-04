@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: InnerOutline
+  m_Shader: {fileID: 4800000, guid: d3a45594e6795bf41b0c39ed81ea318d, type: 3}
+  m_Parent: {fileID: 2100000, guid: b2784121d7122d3448addb977b6cd349, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _ColorSwapTex:
+        m_Texture: {fileID: 2800000, guid: 04bf4dc82969dcf4689e52032fa689e8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistortTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GlowTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ClipUvDown: 0.035
+    - _ClipUvLeft: 0.466
+    - _ClipUvRight: 0.11
+    - _ClipUvUp: 0.349
+    - _ColorSwapBlend: 0.715
+    - _ColorSwapBlueLuminosity: -0.12
+    - _ColorSwapGreenLuminosity: 0.27
+    - _ColorSwapRedLuminosity: -0.38
+    - _DistortAmount: 1.89
+    - _FadeAmount: 1
+    - _FadeBurnWidth: 1
+    - _FishEyeUvAmount: 0.351
+    - _GhostBlend: 0.43
+    - _GhostColorBoost: 4.39
+    - _GhostTransparency: 0
+    - _GlitchAmount: 11.5
+    - _GlitchSize: 0.25
+    - _GlowIntensity: 0
+    - _HandDrawnAmount: 15.1
+    - _HandDrawnSpeed: 15
+    - _HologramStripesAmount: 0.208
+    - _HologramStripesSpeed: 12.1
+    - _HsvBright: 1.38
+    - _HsvSaturation: 0.71
+    - _HsvShift: 360
+    - _OutlineAlpha: 1
+    - _PinchUvAmount: 0.059
+    - _PixelateSize: 16
+    - _ShineLocation: 0.224
+    m_Colors:
+    - _FadeColor: {r: 0.26415092, g: 0.08251514, b: 0.06229975, a: 1}
+    - _GlowColor: {r: 1, g: 1, b: 1, a: 0}
+    - _OutlineColor: {r: 1, g: 0, b: 0.011765003, a: 1}
+  m_BuildTextureStacks: []

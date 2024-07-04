@@ -14,7 +14,7 @@ public class MainPageManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        
+
         StartCoroutine(LoadBGM());
     }
 
@@ -46,6 +46,17 @@ public class MainPageManager : MonoBehaviour
     {
         audioSource.clip = soundClip[clipName];
         audioSource.Play();
+    }
+
+    public void QuitGame()
+    {
+        // 如果是在编辑器中
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        // 如果是在构建后的游戏中
+        Application.Quit();
+#endif
     }
 
     public void OpenSettings()
