@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        Destroy(gameObject, 4f);
     }
 
     void OnTriggerEnter2D(Collider2D other)

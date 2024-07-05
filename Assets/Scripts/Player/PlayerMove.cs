@@ -15,6 +15,9 @@ public class PlayerMove : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed = 20f;
     public float shootCoolDown = 0.2f;
+    public bool canChangeState = false;
+    public GameObject globalManager;
+    public GameObject bulletSet;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -34,9 +37,13 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        moveInput.x = Input.GetAxisRaw("Horizontal");
+        moveInput.y = Input.GetAxisRaw("Vertical");
+        moveInput.Normalize();
         if (playerState == PlayerState.infiniteMove)
         {
             InfiniteMove();
+            playerAttribute.endurance = playerAttribute.enduranceMAX;
         }
         else
         {
@@ -59,9 +66,6 @@ public class PlayerMove : MonoBehaviour
 
     void InfiniteMove()
     {
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
-        moveInput.Normalize();
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
         bool isMoving = moveInput.x != 0 || moveInput.y != 0;
         if (isMoving)
@@ -72,44 +76,25 @@ public class PlayerMove : MonoBehaviour
 
     void FiniteMove()
     {
-        moveInput.x = 0;
-        moveInput.y = 0;
-        if (Input.GetKey(KeyCode.W) && (selectedDirection1 == Vector2.up || selectedDirection2 == Vector2.up))
+        if (playerAttribute.endurance > 0)
         {
-            moveInput.y = 1;
-        }
-        if (Input.GetKey(KeyCode.S) && (selectedDirection1 == Vector2.down || selectedDirection2 == Vector2.down))
-        {
-            moveInput.y = -1;
-        }
-        if (Input.GetKey(KeyCode.A) && (selectedDirection1 == Vector2.left || selectedDirection2 == Vector2.left))
-        {
-            moveInput.x = -1;
-        }
-        if (Input.GetKey(KeyCode.D) && (selectedDirection1 == Vector2.right || selectedDirection2 == Vector2.right))
-        {
-            moveInput.x = 1;
-        }
-        moveInput.Normalize();
-        rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
-        bool isMoving = moveInput.x != 0 || moveInput.y != 0;
-        if (isMoving)
-        {
-            transform.localScale = new Vector3(Mathf.Sign(moveInput.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        }
-    }
+            Vector2 previousPosition = rb.position;
+            Vector2 newPosition = previousPosition + moveInput * moveSpeed * Time.fixedDeltaTime;
+            float distance = Vector2.Distance(previousPosition, newPosition);
+            if (playerAttribute.endurance < distance)
+            {
+                rb.velocity = Vector2.zero;
+                return;
+            }
+            rb.MovePosition(newPosition);
+            playerAttribute.endurance -= distance;
 
-    void SelectRandomDirections()
-    {
-        int index1 = Random.Range(0, possibleDirections.Length);
-        int index2;
-        do
-        {
-            index2 = Random.Range(0, possibleDirections.Length);
-        } while (index2 == index1);
-
-        selectedDirection1 = possibleDirections[index1];
-        selectedDirection2 = possibleDirections[index2];
+            bool isMoving = moveInput.x != 0 || moveInput.y != 0;
+            if (isMoving)
+            {
+                transform.localScale = new Vector3(Mathf.Sign(moveInput.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+        }
     }
 
     void Shoot()
@@ -118,24 +103,25 @@ public class PlayerMove : MonoBehaviour
         mousePosition.z = 0;
         Vector3 shootDirection = (mousePosition - transform.position).normalized;
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        bullet.transform.SetParent(bulletSet.transform);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = shootDirection * bulletSpeed;
     }
 
     public void ChangeState()
     {
-        if (Input.GetButtonDown("ChangeState"))
+        if (Input.GetButtonDown("ChangeState") && canChangeState)
         {
             if (playerState == PlayerState.infiniteMove)
             {
-                SelectRandomDirections();
                 playerState = PlayerState.infiniteAttack;
             }
             else
             {
                 playerState = PlayerState.infiniteMove;
             }
-                
+            globalManager.GetComponent<GlobalManager>().groundStartTime = Time.time;
+            globalManager.GetComponent<GlobalManager>().timeSlice += 1;
         }
     }
 

@@ -8,8 +8,9 @@ public class EnemyMove : MonoBehaviour
     public int HP = 5;
     public GameObject potionPrefab;
     public float potionSpawnChance = 0.1f;
+    public float attackInterval = 1f;
 
-    private bool canAttack = true;
+    private float lastAttackTime = 0f;
 
     void Start()
     {
@@ -20,9 +21,9 @@ public class EnemyMove : MonoBehaviour
     {
         MoveToPlayer();
 
-        if(HP <= 0)
+        if (HP <= 0)
         {
-            if(Random.value <= potionSpawnChance)
+            if (Random.value <= potionSpawnChance)
             {
                 Instantiate(potionPrefab, transform.position, Quaternion.identity);
             }
@@ -41,21 +42,15 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && Time.time - lastAttackTime > attackInterval)
         {
-            StartCoroutine(Attack(other));
+            player.GetComponent<PlayerAttribute>().ChangeHP(-1);
+            lastAttackTime = Time.time;
         }
     }
 
-    private IEnumerator Attack(Collider2D player)
-    {
-        canAttack = false;
-        player.GetComponent<PlayerAttribute>().ChangeHP(-1);
-        yield return new WaitForSeconds(1f);
-        canAttack = true;
-    }
     public void ChangeHP(int value)
     {
         HP += value;

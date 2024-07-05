@@ -114,7 +114,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &7445784935150159003
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,7 +172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c711fe6286a1d548910731e8928a1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 200
+  moveSpeed: 150
+  playerState: 0
+  bulletPrefab: {fileID: 6670689417355361660, guid: 9c1fd75683569f14e882b0555c8bb44c, type: 3}
+  bulletSpeed: 100
+  shootCoolDown: 0.2
 --- !u!114 &3612735392941537585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,4 +192,11 @@ MonoBehaviour:
   HP: 10
   MAXHP: 10
   MP: 10
-  ATK: 10
+  MAXMP: 10
+  ATK: 1
+  endurance: 1000
+  enduranceMAX: 1000
+  isInCircleField: 1
+  circleField: {fileID: 0}
+  circleFieldAttackInterval: 1
+  underAttackTime: 0
