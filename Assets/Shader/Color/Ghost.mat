@@ -8,7 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ghost
-  m_Shader: {fileID: 4800000, guid: b342748b61dbc854c8ec55614933283f, type: 3}
+  m_Shader: {fileID: 4800000, guid: d8dc2ad60e6ade342b9553be229296cf, type: 3}
+  m_Parent: {fileID: 2100000, guid: fdea34907afe14e46935dba9aa632b9d, type: 2}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -17,17 +19,13 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _GhostBlend: 1
-    - _GhostColorBoost: 5
-    - _GhostTransparency: 0.48
+    - _GlitchAmount: 3
+    - _GlitchSize: 1
     m_Colors: []
   m_BuildTextureStacks: []
