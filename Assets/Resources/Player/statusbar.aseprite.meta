@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 490dabc0455807b439b785e3c1b1ad43
+guid: 6527a2075f33b24458f5cd8dffb3f890
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,38 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: status-limitless
+  - name: statusbar
     originalName: 
-    pivot: {x: 0.74999994, y: -0.2142857}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 26
-      width: 14
-      height: 14
-    spriteID: 9096688b445c2c74e89bb6c86d758cfd
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 26}
-  - name: status-limitless_Frame_1
-    originalName: 
-    pivot: {x: 0.71875, y: -0.28571427}
+    pivot: {x: 0.51086956, y: -0.10000001}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 14
-    spriteID: 0444e9cb5d00954488e3ac8cc03cd4b5
+      width: 92
+      height: 20
+    spriteID: c49c3b1f6e6c5bc4d85b44af08d59189
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -161,35 +141,139 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: statusbar_Frame_1
+    originalName: 
+    pivot: {x: 0.51086956, y: -0.10000001}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 32
+      width: 92
+      height: 20
+    spriteID: 767f759ead399b54bb6b18ce95eea530
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 32}
+  - name: statusbar_Frame_1
+    originalName: 
+    pivot: {x: 0.37142855, y: -2.8}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 101
+      width: 70
+      height: 5
+    spriteID: 160702362fabc7947b4b2585e1f30ce7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 101}
+  - name: statusbar_Frame_3
+    originalName: 
+    pivot: {x: 0.54878044, y: -0.3}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 83
+      width: 82
+      height: 10
+    spriteID: 228f4bfdd99f27249bcf736419f2cf43
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 83}
+  - name: statusbar_Frame_3
+    originalName: 
+    pivot: {x: 0.52272725, y: -0.4}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 60
+      width: 88
+      height: 15
+    spriteID: bfc9d2f933c11d740b0209236d23aa24
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 60}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1779124805
-    name: status-limitless
+    guid: -2124226271
+    name: statusbar
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: status-limitless_Frame_0
+    - name: statusbar_Frame_0
       frameIndex: 0
       cellRect:
-        x: 4
-        y: 3
-        width: 14
-        height: 14
-      spriteId: 9096688b445c2c74e89bb6c86d758cfd
-    - name: status-limitless_Frame_1
-      frameIndex: 1
+        x: 1
+        y: 2
+        width: 92
+        height: 20
+      spriteId: c49c3b1f6e6c5bc4d85b44af08d59189
+    - name: statusbar_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 1
+        y: 2
+        width: 92
+        height: 20
+      spriteId: 767f759ead399b54bb6b18ce95eea530
+    - name: statusbar_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 22
+        y: 14
+        width: 70
+        height: 5
+      spriteId: 160702362fabc7947b4b2585e1f30ce7
+    - name: statusbar_Frame_4
+      frameIndex: 4
       cellRect:
         x: 3
-        y: 4
-        width: 16
-        height: 14
-      spriteId: 0444e9cb5d00954488e3ac8cc03cd4b5
+        y: 3
+        width: 82
+        height: 10
+      spriteId: 228f4bfdd99f27249bcf736419f2cf43
+    - name: statusbar_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 2
+        y: 6
+        width: 88
+        height: 15
+      spriteId: bfc9d2f933c11d740b0209236d23aa24
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 29, y: 19}
+  canvasSize: {x: 96, y: 24}
