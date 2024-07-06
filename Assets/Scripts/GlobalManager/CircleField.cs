@@ -60,16 +60,16 @@ public class CircleField : MonoBehaviour
     {
         Vector3 start = transform.position;
         float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
+        
+        while (elapsedTime < duration && globalManager.GetComponent<GlobalManager>().isStart)
         {
             elapsedTime += Time.deltaTime;
             float ratio = elapsedTime / duration;
             transform.position = Vector3.Lerp(start, destination, ratio);
             yield return null;
         }
-
-        transform.position = destination;
+        if(globalManager.GetComponent<GlobalManager>().isStart)
+            transform.position = destination;
     }
 
     void OnTriggerEnter2D(Collider2D other)

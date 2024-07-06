@@ -4,26 +4,12 @@ using UnityEngine;
 
 public class PlayerCollect : MonoBehaviour
 {
-
-    void Start()
-    {
-
-    }
-
-
-    void Update()
-    {
-
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Potion")
         {
             StartCoroutine(MovePotionToPlayer(other.gameObject));
-            print(1);
         }
-        print(other.gameObject.tag);
     }
 
     IEnumerator MovePotionToPlayer(GameObject potion)

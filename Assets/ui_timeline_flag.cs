@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ui_timeline_flag : MonoBehaviour
 {
+    public GameObject player;
     public float end_x;
     public float start_x;
     public float duration = 20f;
@@ -10,12 +11,20 @@ public class ui_timeline_flag : MonoBehaviour
 
     private RectTransform rectTransform;
     private Vector3 initTransform;
+    private Coroutine moveRightCoroutine;
 
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         duration = globalManager.GetComponent<GlobalManager>().groundTotalTime;
         initTransform = rectTransform.anchoredPosition;
+        player = player = GameObject.FindGameObjectWithTag("Player");
+        
+    }
+
+    void Start()
+    {
+        player.GetComponent<PlayerMove>().OnPlayerChangeState += ResetMove;
     }
 
     void Update()
@@ -25,10 +34,24 @@ public class ui_timeline_flag : MonoBehaviour
 
     public void StartMove()
     {
-        StartCoroutine(MoveOverTime());
+        moveRightCoroutine = StartCoroutine(MoveRight());
     }
 
-    IEnumerator MoveOverTime()
+    public void ResetMove(PlayerMove pm)
+    {
+        // StopCoroutine(moveRightCoroutine);
+        StopAllCoroutines();
+        StartCoroutine(ResetMoveCoroutine());
+    }
+
+    public void ResetMove()
+    {
+        // StopCoroutine(moveRightCoroutine);
+        StopAllCoroutines();
+        StartCoroutine(ResetMoveCoroutine());
+    }
+
+    IEnumerator MoveRight()
     {
         float elapsedTime = 0f;
         rectTransform.anchoredPosition = initTransform;
@@ -45,8 +68,27 @@ public class ui_timeline_flag : MonoBehaviour
             yield return null;
         }
 
-        Vector3 finalPosition = rectTransform.anchoredPosition;
-        finalPosition.x = end_x;
-        rectTransform.anchoredPosition = finalPosition;
+        // Vector3 finalPosition = rectTransform.anchoredPosition;
+        // finalPosition.x = end_x;
+        // rectTransform.anchoredPosition = finalPosition;
+    }
+
+    IEnumerator ResetMoveCoroutine()
+    {
+        float elapsedTime = 0f;
+        Vector3 currentPosition = rectTransform.anchoredPosition;
+
+        while (elapsedTime < 1)
+        {
+            elapsedTime += Time.deltaTime;
+            float ratio = elapsedTime / 1;
+
+            Vector3 position = currentPosition;
+            position.x = Mathf.Lerp(currentPosition.x, start_x, ratio);
+            rectTransform.anchoredPosition = position;
+
+            yield return null;
+        }
+        StartCoroutine(MoveRight());
     }
 }
