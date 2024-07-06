@@ -20,12 +20,6 @@ public class PlayerAttribute : MonoBehaviour
 
     private float lastUnderAttackTime = 0f;
 
-    void Start()
-    {
-
-    }
-
-
     void Update()
     {
         if (!isInCircleField)

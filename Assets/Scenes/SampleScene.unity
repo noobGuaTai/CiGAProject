@@ -193,7 +193,7 @@ MonoBehaviour:
   enemySet: {fileID: 378268452}
   enemySpawnInterval: 4
   enemySpawnIntervalInit: 4
-  groundTime: 0
+  groundTime: 20
   groundStartTime: 0
   groundTotalTime: 20
   globalTime: 0
@@ -220,6 +220,11 @@ MonoBehaviour:
   bulletSet: {fileID: 1722884838}
   timeSliceUI: {fileID: 1981883229}
   timeSliceTotalUI: {fileID: 1532804762}
+  widthBorder: 800
+  heightBorder: 500
+  tileMap: {fileID: 622829373}
+  tileMapMoveSpeed: 40
+  mainPage: {fileID: 1061197845}
   audioSource1: {fileID: 121079228}
   audioSource2: {fileID: 121079229}
   audioSource3: {fileID: 121079230}
@@ -1246,7 +1251,7 @@ MonoBehaviour:
   tile_array: []
   tilemap: {fileID: 0}
   file_path: Player/GroundTiles
-  tile_probs: 28000000010000000100000001000000010000000100000001000000
+  tile_probs: 14000000010000000100000001000000010000000100000001000000
 --- !u!483693784 &622829376
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -2160,7 +2165,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 836998765}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 121079226}
+        m_TargetAssemblyTypeName: GlobalManager, Assembly-CSharp
+        m_MethodName: BackHome
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &836998765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2374,6 +2391,11 @@ Transform:
   - {fileID: 1722884839}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1061197845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3627247459756424777, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+  m_PrefabInstance: {fileID: 3589796655595899710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1112105759
 GameObject:
   m_ObjectHideFlags: 0

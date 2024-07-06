@@ -40,13 +40,22 @@ public class GlobalManager : MonoBehaviour
     public GameObject bulletSet;
     public GameObject timeSliceUI;
     public GameObject timeSliceTotalUI;
+    public float widthBorder = 200f;
+    public float heightBorder = 300f;
+    public GameObject tileMap;
+    public float tileMapMoveSpeed = 40f;
+    public GameObject mainPage;
 
     public AudioSource audioSource1;// BGM
     public AudioSource audioSource2;// 倒计时音效
     public AudioSource audioSource3;// 射击音效/子弹耗尽音效
     public AudioSource audioSource4;// 捡起道具音效
-
     public bool isPlayCountDown = false;
+
+    private Vector3 tileMapInitialPosition;
+    private Vector3 tileMapTargetPosition;
+    private int directionIndex = 0;
+    private Vector3[] directions;
 
     void Start()
     {
@@ -54,6 +63,13 @@ public class GlobalManager : MonoBehaviour
         soundClip = new Dictionary<string, AudioClip>();
         circleFieldInitLocalScale = circleField.transform.localScale;
         gameUI.SetActive(false);
+        directions = new Vector3[]
+        {
+            new Vector3(1, 0, 0),
+            new Vector3(0, -1, 0),
+            new Vector3(-1, 0, 0),
+            new Vector3(0, 1, 0)
+        };
         // SpawnBackgroundObjects();
         StartCoroutine(LoadSound("Effect"));
         StartCoroutine(LoadSound("BackgroundMusic"));
@@ -69,6 +85,7 @@ public class GlobalManager : MonoBehaviour
         PlaySound(audioSource1, "battleBGM");
         StartCoroutine(SpawnEnemyCoroutine());
         timeFlag.GetComponent<ui_timeline_flag>().StartMove();
+        tileMap.transform.position = tileMapInitialPosition;
     }
 
     void Update()
@@ -102,11 +119,15 @@ public class GlobalManager : MonoBehaviour
                 GameOver();
             }
         }
+        else
+        {
+            MoveTilemap();
+        }
     }
 
     IEnumerator SpawnEnemyCoroutine()
     {
-        while (true)
+        while (isStart)
         {
             SpawnEnemy();
             yield return new WaitForSeconds(enemySpawnInterval);
@@ -155,13 +176,39 @@ public class GlobalManager : MonoBehaviour
         }
     }
 
+    void MoveTilemap()
+    {
+        float step = tileMapMoveSpeed * Time.deltaTime;
+        tileMap.transform.position = Vector3.MoveTowards(tileMap.transform.position, tileMapTargetPosition, step);
+
+        if (Vector3.Distance(tileMap.transform.position, tileMapTargetPosition) < 0.001f)
+        {
+            directionIndex = (directionIndex + 1) % directions.Length;
+            switch (directionIndex)
+            {
+                case 0:
+                    tileMapTargetPosition = new Vector3(tileMapInitialPosition.x + widthBorder, tileMap.transform.position.y, tileMap.transform.position.z);
+                    break;
+                case 1:
+                    tileMapTargetPosition = new Vector3(tileMap.transform.position.x, tileMapInitialPosition.y - heightBorder, tileMap.transform.position.z);
+                    break;
+                case 2:
+                    tileMapTargetPosition = new Vector3(tileMapInitialPosition.x - widthBorder, tileMap.transform.position.y, tileMap.transform.position.z);
+                    break;
+                case 3:
+                    tileMapTargetPosition = new Vector3(tileMap.transform.position.x, tileMapInitialPosition.y + heightBorder, tileMap.transform.position.z);
+                    break;
+            }
+        }
+    }
+
     public void ReStartNextTimeSlice()
     {
         groundStartTime = Time.time;
         timeSlice += 1;
         isPlayCountDown = false;
         StopSound(audioSource2);
-        timeFlag.GetComponent<ui_timeline_flag>().StartMove();
+        timeFlag.GetComponent<ui_timeline_flag>().ResetMove();
         // if (timeSlice % 2 == 0)// 每2次时间片就增加一次难度
         {
             float localScaleX = circleField.GetComponent<CircleField>().transform.localScale.x;
@@ -193,7 +240,7 @@ public class GlobalManager : MonoBehaviour
         enemyHP = 5;
         StopSound(audioSource2);
         PlaySound(audioSource1, "battleBGM");
-        timeFlag.GetComponent<ui_timeline_flag>().StartMove();
+        timeFlag.GetComponent<ui_timeline_flag>().ResetMove();
         foreach (Transform child in enemySet.transform)
         {
             Destroy(child.gameObject);
@@ -212,5 +259,39 @@ public class GlobalManager : MonoBehaviour
         isStart = false;
         timeSliceUI.GetComponent<TextMeshProUGUI>().text = "总生存时长：" + timeSlice;
         timeSliceTotalUI.GetComponent<TextMeshProUGUI>().text = "历史最佳：" + timeSliceRank;
+    }
+
+    public void BackHome()
+    {
+        Time.timeScale = 1f;
+        gameUI.SetActive(false);
+        gameOverPanel.SetActive(false);
+        player.GetComponent<PlayerAttribute>().HP = player.GetComponent<PlayerAttribute>().MAXHP;
+        player.GetComponent<PlayerMove>().canChangeState = false;
+        groundStartTime = Time.time;
+        groundTotalTime = 20f;
+        globalTime = 0f;
+        gameStartTime = Time.time;
+        groundTime = groundTotalTime;
+        timeSlice = 0;
+        circleField.transform.position = Vector2.zero;
+        circleField.transform.localScale = circleFieldInitLocalScale;
+        enemyHP = 5;
+        StopSound(audioSource2);
+        PlaySound(audioSource1, "mainPageBGM");
+        foreach (Transform child in enemySet.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in bulletSet.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+
+        mainPage.SetActive(true);
+        player.transform.position = new Vector2(60, 0);
+        mainCamera.GetComponent<CameraFollow>().isZoomIn = false;
+        mainCamera.transform.position = new Vector3(0, 0, -10);
     }
 }
