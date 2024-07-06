@@ -10,7 +10,8 @@ public enum PlayerState
 
 public class PlayerMove : MonoBehaviour
 {
-    public float moveSpeed = 200f;
+    public float moveSpeed = 100f;
+    public float initMoveSpeed = 100f;
     public PlayerState playerState;
     public GameObject bulletPrefab;
     public float bulletSpeed = 20f;
@@ -57,13 +58,8 @@ public class PlayerMove : MonoBehaviour
                 Shoot();
                 shootTimer = shootCoolDown;
                 playerAttribute.MP -= 1;
-                animator.SetBool("attack", true);
             }
-            else
-            {
-                animator.SetBool("attack", false);
-            }
-            
+
             if (Input.GetMouseButtonDown(0) && playerAttribute.MP == 0)
             {
                 globalManager.GetComponent<GlobalManager>().PlaySound(globalManager.GetComponent<GlobalManager>().audioSource3, "BulletOverShoot");
@@ -73,6 +69,7 @@ public class PlayerMove : MonoBehaviour
                 shootTimer -= Time.deltaTime;
             }
             ChangeState();
+            animator.speed = moveSpeed / initMoveSpeed;
         }
 
     }
@@ -136,10 +133,12 @@ public class PlayerMove : MonoBehaviour
             if (playerState == PlayerState.infiniteMove)
             {
                 playerState = PlayerState.infiniteAttack;
+                animator.SetBool("attack", true);
             }
             else
             {
                 playerState = PlayerState.infiniteMove;
+                animator.SetBool("attack", false);
             }
             globalManager.GetComponent<GlobalManager>().ReStartNextTimeSlice();
         }

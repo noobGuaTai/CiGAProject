@@ -11,6 +11,7 @@ public class Potion : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         globalManager = GameObject.FindGameObjectWithTag("GlobalManager");
+        Destroy(gameObject, 8f);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -33,7 +34,7 @@ public class Potion : MonoBehaviour
 
             tween.Clear();
             tween.AddTween(_DropProcess, transform.position, targetPos, collectDelay, Tween.TransitionType.QUAD, Tween.EaseType.OUT);
-            // tween.AddTween(_DropCollect, 0f, 0f, 0);
+            tween.AddTween(_DropCollect, 0f, 0f, 0);
             tween.Play();
         }
 
@@ -42,5 +43,10 @@ public class Potion : MonoBehaviour
     public void _DropProcess(Vector3 position)
     {
         transform.position = position;
+    }
+
+    public void _DropCollect(float _)
+    {
+        
     }
 }

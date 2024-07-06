@@ -339,9 +339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c8e26b9304d4d408111168ab85d474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {fileID: 0}
-  magic: {fileID: 0}
-  image: {fileID: 0}
+  move: {fileID: 21300000, guid: 6e410737de515304bac8b15c9918d3aa, type: 3}
+  magic: {fileID: 21300000, guid: 222bfb7a006a1db479d53e748b7b27c3, type: 3}
+  image: {fileID: 3762610418057671295}
 --- !u!1 &4566661627903540602
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3, y: -46}
+  m_AnchoredPosition: {x: -35, y: -46}
   m_SizeDelta: {x: 3, y: 6}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &4307935650669414105
@@ -542,8 +542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b4c2c98d67b6f4dbbf84efc84cb2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  end_x: 0
-  start_x: 0
+  end_x: 45
+  start_x: -35
   duration: 20
   globalManager: {fileID: 0}
 --- !u!1 &4879777278309278135
@@ -671,7 +671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2195017345079745480
 RectTransform:
   m_ObjectHideFlags: 0
@@ -679,7 +679,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6106203934544759112}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

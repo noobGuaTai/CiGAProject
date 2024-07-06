@@ -11,7 +11,7 @@ public class ui_timeline_flag : MonoBehaviour
     private RectTransform rectTransform;
     private Vector3 initTransform;
 
-    void Start()
+    void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         duration = globalManager.GetComponent<GlobalManager>().groundTotalTime;

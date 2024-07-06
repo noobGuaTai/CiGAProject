@@ -8,12 +8,14 @@ public class CameraFollow : MonoBehaviour
     public float zoomSpeed = 100f;
     public Vector3 offset;
 
+    public bool isZoomIn = false;
+
     void Start()
     {
         // offset = transform.position - target.position;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (globalManager.GetComponent<GlobalManager>().isStart)
         {
@@ -21,9 +23,11 @@ public class CameraFollow : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
             ZoomOut();
         }
-        else
+        else if (!isZoomIn)
         {
             ZoomIn();
+            if (GetComponent<Camera>().orthographicSize == 90)
+                isZoomIn = true;
         }
     }
 

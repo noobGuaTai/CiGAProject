@@ -17,6 +17,8 @@ public class PlayerAttribute : MonoBehaviour
     public float underAttackTime = 0f;
     public GameObject globalManager;
 
+    private float lastUnderAttackTime = 0f;
+
     void Start()
     {
 
@@ -38,6 +40,7 @@ public class PlayerAttribute : MonoBehaviour
 
     public void ChangeHP(int value)
     {
+        
         HP += value;
         if (HP < 0)
         {

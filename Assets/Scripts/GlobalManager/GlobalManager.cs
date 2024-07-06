@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,7 @@ public class GlobalManager : MonoBehaviour
     public GameObject circleField;
     public Vector3 circleFieldInitLocalScale;
     public int enemyHP = 5;
+    public float enemySpeed = 5;
     public float topDownBorder = 300f;//地图边界
     public float leftRightBorder = 400f;
     public GameObject backgroundObject1;
@@ -33,6 +35,11 @@ public class GlobalManager : MonoBehaviour
     public float minDistanceBetweenObjects = 50f;
     public List<Vector3> backgroundObjectSpawnPositions = new List<Vector3>(); // 存储生成的位置
     public GameObject timeFlag;
+    public GameObject gameUI;
+    public GameObject gameOverPanel;
+    public GameObject bulletSet;
+    public GameObject timeSliceUI;
+    public GameObject timeSliceTotalUI;
 
     public AudioSource audioSource1;// BGM
     public AudioSource audioSource2;// 倒计时音效
@@ -56,6 +63,8 @@ public class GlobalManager : MonoBehaviour
         isStart = true;
         gameStartTime = Time.time;
         groundStartTime = Time.time;
+        gameUI.SetActive(true);
+        circleField.GetComponent<CircleField>().StartMove();
         PlaySound(audioSource1, "battleBGM");
         StartCoroutine(SpawnEnemyCoroutine());
         timeFlag.GetComponent<ui_timeline_flag>().StartMove();
@@ -113,53 +122,6 @@ public class GlobalManager : MonoBehaviour
         enemy.GetComponent<EnemyMove>().HP = enemyHP;
     }
 
-    void SpawnBackgroundObjects()
-    {
-        for (int i = 0; i < numberOfObjects; i++)
-        {
-            Vector3 spawnPosition;
-            int attempts = 0;
-            bool validPosition;
-
-            do
-            {
-                // 计算生成位置，确保在边界范围内
-                float xPos = Random.Range(-leftRightBorder, leftRightBorder);
-                float yPos = Random.Range(-topDownBorder, topDownBorder);
-
-                spawnPosition = new Vector3(xPos, yPos, 0f);
-
-                // 检查生成位置是否与已有位置太近
-                validPosition = true;
-                foreach (var pos in backgroundObjectSpawnPositions)
-                {
-                    if (Vector3.Distance(pos, spawnPosition) < minDistanceBetweenObjects)
-                    {
-                        validPosition = false;
-                        break;
-                    }
-                }
-
-                attempts++;
-                if (attempts > 100)
-                {
-                    // 防止死循环，如果尝试次数过多则强制退出
-                    validPosition = true;
-                }
-
-            } while (!validPosition && attempts < 100);
-
-            // 存储生成的位置
-            backgroundObjectSpawnPositions.Add(spawnPosition);
-
-            // 随机选择要生成的背景对象
-            GameObject selectedObject = Random.Range(0, 2) == 0 ? backgroundObject1 : backgroundObject2;
-
-            // 实例化背景对象
-            Instantiate(selectedObject, spawnPosition, Quaternion.identity);
-        }
-    }
-
     IEnumerator LoadSound(string path)
     {
         yield return null;
@@ -199,33 +161,55 @@ public class GlobalManager : MonoBehaviour
         isPlayCountDown = false;
         StopSound(audioSource2);
         timeFlag.GetComponent<ui_timeline_flag>().StartMove();
-        if (timeSlice % 5 == 0)// 每5次时间片就增加一次难度
+        // if (timeSlice % 2 == 0)// 每2次时间片就增加一次难度
         {
             float localScaleX = circleField.GetComponent<CircleField>().transform.localScale.x;
             float localScaleY = circleField.GetComponent<CircleField>().transform.localScale.y;
             circleField.GetComponent<CircleField>().transform.localScale = new Vector3(localScaleX - 50, localScaleY - 50, circleField.GetComponent<CircleField>().transform.localScale.z);
             enemyHP += 5;
             enemySpawnInterval = enemySpawnInterval > 0.1f ? enemySpawnInterval - 0.1f : enemySpawnInterval;
+            player.GetComponent<PlayerMove>().moveSpeed += 2;
         }
     }
 
     public void ResetGame()
     {
+        Time.timeScale = 1f;
+        isStart = true;
+        gameOverPanel.SetActive(false);
+        player.transform.position = Vector2.zero;
+        player.GetComponent<PlayerAttribute>().HP = player.GetComponent<PlayerAttribute>().MAXHP;
+        player.GetComponent<PlayerMove>().canChangeState = false;
         groundStartTime = Time.time;
         groundTotalTime = 20f;
         globalTime = 0f;
         gameStartTime = Time.time;
+        groundTime = groundTotalTime;
         timeSlice = 0;
+        circleField.transform.position = Vector2.zero;
         circleField.transform.localScale = circleFieldInitLocalScale;
+        circleField.GetComponent<CircleField>().StartMove();
         enemyHP = 5;
         StopSound(audioSource2);
         PlaySound(audioSource1, "battleBGM");
         timeFlag.GetComponent<ui_timeline_flag>().StartMove();
+        foreach (Transform child in enemySet.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in bulletSet.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
     public void GameOver()
     {
+        gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
         timeSliceRank = timeSliceRank < timeSlice ? timeSlice : timeSliceRank;
+        isStart = false;
+        timeSliceUI.GetComponent<TextMeshProUGUI>().text = "总生存时长：" + timeSlice;
+        timeSliceTotalUI.GetComponent<TextMeshProUGUI>().text = "历史最佳：" + timeSliceRank;
     }
 }
