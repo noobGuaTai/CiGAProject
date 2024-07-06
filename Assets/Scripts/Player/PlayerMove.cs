@@ -26,6 +26,8 @@ public class PlayerMove : MonoBehaviour
     private float shootTimer = 0f;
     private Animator animator;
 
+    public delegate void OnPlayerChangeStateType(PlayerMove who);
+    public OnPlayerChangeStateType OnPlayerChangeState;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -141,6 +143,7 @@ public class PlayerMove : MonoBehaviour
                 animator.SetBool("attack", false);
             }
             globalManager.GetComponent<GlobalManager>().ReStartNextTimeSlice();
+            OnPlayerChangeState.Invoke(this);
         }
     }
 

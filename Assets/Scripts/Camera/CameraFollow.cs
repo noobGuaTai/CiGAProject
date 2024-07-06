@@ -1,8 +1,10 @@
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
+//[DefaultExecutionOrder(10)]
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
+    public UnityEngine.Transform target;
     public float smoothing = 20f;
     public GameObject globalManager;
     public float zoomSpeed = 100f;
@@ -20,7 +22,8 @@ public class CameraFollow : MonoBehaviour
         if (globalManager.GetComponent<GlobalManager>().isStart)
         {
             Vector3 targetCamPos = target.position + offset;
-            transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+            //transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+            transform.position = targetCamPos;
             ZoomOut();
         }
         else if (!isZoomIn)

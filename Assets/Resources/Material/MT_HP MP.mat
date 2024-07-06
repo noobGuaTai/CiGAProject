@@ -29,9 +29,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _hp_max: -70.42739
-    - _hp_min: -152.4274
-    - _hp_ratio: 0.9
+    - _hp_max: -70
+    - _hp_min: -152
+    - _hp_ratio: 1
+    - _white_ratio: 0
     m_Colors:
     - _hp_base_color: {r: 0.19550726, g: 0.3302034, b: 0.4264151, a: 0}
     - _hp_light_color: {r: 0.3075471, g: 0.71069914, b: 1, a: 0}

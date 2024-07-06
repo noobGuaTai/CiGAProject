@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 458207230182310800}
-  smoothing: 5
+  smoothing: 9999
   globalManager: {fileID: 121079225}
   zoomSpeed: 100
   offset: {x: 0, y: 0, z: -10}

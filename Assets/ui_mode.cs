@@ -12,12 +12,18 @@ public class ui_mode : MonoBehaviour
     public Sprite magic;
     public Image image;
 
-    bool is_move = false;
+    bool is_move = true;
     private GameObject player;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        var player_move = player.GetComponent<PlayerMove>();
+        player_move.OnPlayerChangeState += on_switch_mode;
+    }
+
+    void on_switch_mode(PlayerMove who) {
+        switch_mode();
     }
 
     void Update()
