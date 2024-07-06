@@ -25,7 +25,8 @@ public class EnemyMove : MonoBehaviour
         {
             if (Random.value <= potionSpawnChance)
             {
-                Instantiate(potionPrefab, transform.position, Quaternion.identity);
+                GameObject potion = Instantiate(potionPrefab, transform.position, Quaternion.identity);
+                potion.GetComponent<Potion>().Drop(transform.position);
             }
             Destroy(gameObject);
         }

@@ -9,7 +9,8 @@ public class GlobalManager : MonoBehaviour
     public GameObject enemyPrefab;
     public float spawnPointDistance = 100f;
     public GameObject enemySet;
-    public float enemySpawnInterval = 1f;
+    public float enemySpawnInterval = 2f;
+    public float enemySpawnIntervalInit = 2f;
     public float groundTime; // 当前时间片时间
     public float groundStartTime; // 当前时间片开始时间
     public float groundTotalTime = 20f; // 时间片总时间
@@ -24,6 +25,13 @@ public class GlobalManager : MonoBehaviour
     public GameObject circleField;
     public Vector3 circleFieldInitLocalScale;
     public int enemyHP = 5;
+    public float topDownBorder = 300f;//地图边界
+    public float leftRightBorder = 400f;
+    public GameObject backgroundObject1;
+    public GameObject backgroundObject2;
+    public int numberOfObjects = 10;
+    public float minDistanceBetweenObjects = 50f;
+    public List<Vector3> backgroundObjectSpawnPositions = new List<Vector3>(); // 存储生成的位置
 
     public AudioSource audioSource1;// BGM
     public AudioSource audioSource2;// 倒计时音效
@@ -37,6 +45,7 @@ public class GlobalManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         soundClip = new Dictionary<string, AudioClip>();
         circleFieldInitLocalScale = circleField.transform.localScale;
+        SpawnBackgroundObjects();
         StartCoroutine(LoadSound("Effect"));
         StartCoroutine(LoadSound("BackgroundMusic"));
     }
@@ -102,6 +111,53 @@ public class GlobalManager : MonoBehaviour
         enemy.GetComponent<EnemyMove>().HP = enemyHP;
     }
 
+    void SpawnBackgroundObjects()
+    {
+        for (int i = 0; i < numberOfObjects; i++)
+        {
+            Vector3 spawnPosition;
+            int attempts = 0;
+            bool validPosition;
+
+            do
+            {
+                // 计算生成位置，确保在边界范围内
+                float xPos = Random.Range(-leftRightBorder, leftRightBorder);
+                float yPos = Random.Range(-topDownBorder, topDownBorder);
+
+                spawnPosition = new Vector3(xPos, yPos, 0f);
+
+                // 检查生成位置是否与已有位置太近
+                validPosition = true;
+                foreach (var pos in backgroundObjectSpawnPositions)
+                {
+                    if (Vector3.Distance(pos, spawnPosition) < minDistanceBetweenObjects)
+                    {
+                        validPosition = false;
+                        break;
+                    }
+                }
+
+                attempts++;
+                if (attempts > 100)
+                {
+                    // 防止死循环，如果尝试次数过多则强制退出
+                    validPosition = true;
+                }
+
+            } while (!validPosition && attempts < 100);
+
+            // 存储生成的位置
+            backgroundObjectSpawnPositions.Add(spawnPosition);
+
+            // 随机选择要生成的背景对象
+            GameObject selectedObject = Random.Range(0, 2) == 0 ? backgroundObject1 : backgroundObject2;
+
+            // 实例化背景对象
+            Instantiate(selectedObject, spawnPosition, Quaternion.identity);
+        }
+    }
+
     IEnumerator LoadSound(string path)
     {
         yield return null;
@@ -112,7 +168,6 @@ public class GlobalManager : MonoBehaviour
             if (!soundClip.ContainsKey(clip.name))
             {
                 soundClip[clip.name] = clip;
-                print(clip.name);
             }
             else
             {
@@ -147,6 +202,7 @@ public class GlobalManager : MonoBehaviour
             float localScaleY = circleField.GetComponent<CircleField>().transform.localScale.y;
             circleField.GetComponent<CircleField>().transform.localScale = new Vector3(localScaleX - 50, localScaleY - 50, circleField.GetComponent<CircleField>().transform.localScale.z);
             enemyHP += 5;
+            enemySpawnInterval = enemySpawnInterval > 0.1f ? enemySpawnInterval - 0.1f : enemySpawnInterval;
         }
     }
 

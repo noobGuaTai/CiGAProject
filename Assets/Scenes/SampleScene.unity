@@ -510,20 +510,33 @@ MonoBehaviour:
   enemyPrefab: {fileID: 823338838608669526, guid: d51950619d460b34d829135cf2b532cc, type: 3}
   spawnPointDistance: 200
   enemySet: {fileID: 378268452}
-  enemySpawnInterval: 1
+  enemySpawnInterval: 2
+  enemySpawnIntervalInit: 2
   groundTime: 0
   groundStartTime: 0
   groundTotalTime: 20
   globalTime: 0
   gameStartTime: 0
   timeSlice: 0
+  timeSliceRank: 0
   isStart: 0
   sliderBGM: {fileID: 827758725}
   mainCamera: {fileID: 519420028}
+  circleField: {fileID: 1899096425}
+  circleFieldInitLocalScale: {x: 0, y: 0, z: 0}
+  enemyHP: 5
+  topDownBorder: 300
+  leftRightBorder: 400
+  backgroundObject1: {fileID: 1156219897507031234, guid: d55e8ae0f8b59ec44bee40a7828db9af, type: 3}
+  backgroundObject2: {fileID: 7091416136456939432, guid: f685f83a64d8d254f8c4c9280b63d71c, type: 3}
+  numberOfObjects: 100
+  minDistanceBetweenObjects: 50
+  backgroundObjectSpawnPositions: []
   audioSource1: {fileID: 121079228}
   audioSource2: {fileID: 121079229}
   audioSource3: {fileID: 121079230}
   audioSource4: {fileID: 121079231}
+  isPlayCountDown: 0
 --- !u!4 &121079227
 Transform:
   m_ObjectHideFlags: 0
@@ -1703,7 +1716,7 @@ MonoBehaviour:
   smoothing: 5
   globalManager: {fileID: 121079225}
   zoomSpeed: 100
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: -10}
 --- !u!1 &660158467
 GameObject:
   m_ObjectHideFlags: 0
@@ -3497,7 +3510,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 50, y: -5, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1048188677}
@@ -3543,7 +3556,7 @@ SpriteRenderer:
   m_SortingLayerID: 1388505877
   m_SortingLayer: 5
   m_SortingOrder: -1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 1284006690570059360, guid: 55f0bcdf11d510b44bd6364509184ebb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3612,6 +3625,7 @@ GameObject:
   - component: {fileID: 7558391130555883696}
   - component: {fileID: 6826466280349970269}
   - component: {fileID: 4437016432947584282}
+  - component: {fileID: 7558391130555883697}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -3654,8 +3668,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: -0.083333336}
+    oldSize: {x: 0.12, y: 0.24}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3664,6 +3678,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &7558391130555883697
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476710637330405125}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: -1081489666633466225, guid: 55f0bcdf11d510b44bd6364509184ebb, type: 3}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
