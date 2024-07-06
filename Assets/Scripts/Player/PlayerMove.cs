@@ -143,9 +143,8 @@ public class PlayerMove : MonoBehaviour
                 animator.SetBool("attack", false);
             }
             globalManager.GetComponent<GlobalManager>().ReStartNextTimeSlice();
-            
+
             OnPlayerChangeState.Invoke(this);
         }
     }
-
 }
