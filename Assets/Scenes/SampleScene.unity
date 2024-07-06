@@ -216,10 +216,10 @@ MonoBehaviour:
   backgroundObjectSpawnPositions: []
   timeFlag: {fileID: 2098030161}
   gameUI: {fileID: 1497638822}
-  gameOverPanel: {fileID: 0}
-  bulletSet: {fileID: 0}
-  timeSliceUI: {fileID: 0}
-  timeSliceTotalUI: {fileID: 0}
+  gameOverPanel: {fileID: 182139258}
+  bulletSet: {fileID: 1722884838}
+  timeSliceUI: {fileID: 1981883229}
+  timeSliceTotalUI: {fileID: 1532804762}
   audioSource1: {fileID: 121079228}
   audioSource2: {fileID: 121079229}
   audioSource3: {fileID: 121079230}
@@ -2619,7 +2619,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1316813026}
   - component: {fileID: 1316813027}
-  m_Layer: 8
+  - component: {fileID: 1316813028}
+  m_Layer: 0
   m_Name: Collet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2673,9 +2674,21 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.53362846}
+  m_Offset: {x: 0, y: 1.3154011}
   serializedVersion: 2
-  m_Radius: 23.845613
+  m_Radius: 30.881563
+--- !u!114 &1316813028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316813025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c197535af8021d479497da147cb877c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1347646833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3481,7 +3494,7 @@ Transform:
   m_GameObject: {fileID: 7476710637330405125}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 59.1, y: -11.8, z: 0}
+  m_LocalPosition: {x: 60, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3592,6 +3605,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2201624036161643462, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3627247459756424777, guid: 47933cd3840796148be3d6229725af8d, type: 3}
       propertyPath: m_Name
       value: MainPage
@@ -3654,7 +3671,7 @@ SpriteRenderer:
   m_SortingLayerID: 1388505877
   m_SortingLayer: 4
   m_SortingOrder: -1
-  m_Sprite: {fileID: 1431045324, guid: 8cc2576dea78acc41b7c1381162113c5, type: 3}
+  m_Sprite: {fileID: 1035460219, guid: a2862a3f10a7c3b4daa1fcb179f59b73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3689,6 +3706,7 @@ MonoBehaviour:
   circleFieldAttackInterval: 1
   underAttackTime: 0
   globalManager: {fileID: 121079225}
+  underAttackInterval: 1
 --- !u!114 &6826466280349970269
 MonoBehaviour:
   m_ObjectHideFlags: 0
