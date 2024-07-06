@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 490dabc0455807b439b785e3c1b1ad43
+guid: b6c78d8f47e0cd045805609d1307a6a6
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,38 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: status-limitless
+  - name: status-limitless-icon
     originalName: 
-    pivot: {x: 0.74999994, y: -0.2142857}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 26
-      width: 14
-      height: 14
-    spriteID: 9096688b445c2c74e89bb6c86d758cfd
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 26}
-  - name: status-limitless_Frame_1
-    originalName: 
-    pivot: {x: 0.71875, y: -0.28571427}
+    pivot: {x: -0.6875, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 14
-    spriteID: 0444e9cb5d00954488e3ac8cc03cd4b5
+      width: 8
+      height: 5
+    spriteID: e0025f755e7cc9c45a0df4b5125c39d0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -164,32 +144,24 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1779124805
-    name: status-limitless
+    guid: -480408861
+    name: status-limitless-icon
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: status-limitless_Frame_0
+    - name: status-limitless-icon
       frameIndex: 0
       cellRect:
-        x: 4
-        y: 3
-        width: 14
-        height: 14
-      spriteId: 9096688b445c2c74e89bb6c86d758cfd
-    - name: status-limitless_Frame_1
-      frameIndex: 1
-      cellRect:
-        x: 3
-        y: 4
-        width: 16
-        height: 14
-      spriteId: 0444e9cb5d00954488e3ac8cc03cd4b5
+        x: 19
+        y: 0
+        width: 8
+        height: 5
+      spriteId: e0025f755e7cc9c45a0df4b5125c39d0
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 29, y: 19}
+  canvasSize: {x: 27, y: 15}

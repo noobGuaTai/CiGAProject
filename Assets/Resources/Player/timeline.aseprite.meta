@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 490dabc0455807b439b785e3c1b1ad43
+guid: 047e6686ffeb5be409145ab9e438cb3a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,38 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: status-limitless
+  - name: timeline
     originalName: 
-    pivot: {x: 0.74999994, y: -0.2142857}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 26
-      width: 14
-      height: 14
-    spriteID: 9096688b445c2c74e89bb6c86d758cfd
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 26}
-  - name: status-limitless_Frame_1
-    originalName: 
-    pivot: {x: 0.71875, y: -0.28571427}
+    pivot: {x: 0.4954129, y: -0.05882353}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 14
-    spriteID: 0444e9cb5d00954488e3ac8cc03cd4b5
+      width: 109
+      height: 17
+    spriteID: 937ac0b64b930684994f6a5d55f0877e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -161,35 +141,55 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: timeline_Frame_1
+    originalName: 
+    pivot: {x: 3.5333333, y: -0.13333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 29
+      width: 15
+      height: 15
+    spriteID: 7a204d4903f8b38498e17d83a320dff6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 29}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1779124805
-    name: status-limitless
+    guid: 1108862443
+    name: timeline
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: status-limitless_Frame_0
+    - name: timeline_Frame_0
       frameIndex: 0
       cellRect:
-        x: 4
-        y: 3
-        width: 14
-        height: 14
-      spriteId: 9096688b445c2c74e89bb6c86d758cfd
-    - name: status-limitless_Frame_1
+        x: 3
+        y: 1
+        width: 109
+        height: 17
+      spriteId: 937ac0b64b930684994f6a5d55f0877e
+    - name: timeline_Frame_1
       frameIndex: 1
       cellRect:
-        x: 3
-        y: 4
-        width: 16
-        height: 14
-      spriteId: 0444e9cb5d00954488e3ac8cc03cd4b5
+        x: 4
+        y: 2
+        width: 15
+        height: 15
+      spriteId: 7a204d4903f8b38498e17d83a320dff6
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 29, y: 19}
+  canvasSize: {x: 114, y: 21}
