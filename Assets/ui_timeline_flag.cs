@@ -9,21 +9,29 @@ public class ui_timeline_flag : MonoBehaviour
     public GameObject globalManager;
 
     private RectTransform rectTransform;
+    private Vector3 initTransform;
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        StartCoroutine(MoveOverTime());
+        duration = globalManager.GetComponent<GlobalManager>().groundTotalTime;
+        initTransform = rectTransform.anchoredPosition;
     }
 
     void Update()
     {
-        duration = globalManager.GetComponent<GlobalManager>().groundTime;
+        
     }
 
-    public IEnumerator MoveOverTime()
+    public void StartMove()
+    {
+        StartCoroutine(MoveOverTime());
+    }
+
+    IEnumerator MoveOverTime()
     {
         float elapsedTime = 0f;
+        rectTransform.anchoredPosition = initTransform;
 
         while (elapsedTime < duration)
         {

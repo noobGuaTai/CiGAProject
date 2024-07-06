@@ -213,6 +213,7 @@ MonoBehaviour:
   numberOfObjects: 100
   minDistanceBetweenObjects: 50
   backgroundObjectSpawnPositions: []
+  timeFlag: {fileID: 2098030161}
   audioSource1: {fileID: 121079228}
   audioSource2: {fileID: 121079229}
   audioSource3: {fileID: 121079230}
@@ -959,7 +960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3352922794966481032, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 45
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 4426561136559374301, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
       propertyPath: m_IsActive
@@ -995,11 +996,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7119060589629334401, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
       propertyPath: end_x
-      value: -35
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 7119060589629334401, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
       propertyPath: start_x
-      value: 45
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 7119060589629334401, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
       propertyPath: globalManager
@@ -1013,6 +1014,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 7476710637330405125}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2548,6 +2553,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1250044120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2098030161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4773833677701439313, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+  m_PrefabInstance: {fileID: 526123573}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &208674582150031669
 Rigidbody2D:
   serializedVersion: 4
