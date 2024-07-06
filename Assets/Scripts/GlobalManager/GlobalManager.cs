@@ -32,6 +32,7 @@ public class GlobalManager : MonoBehaviour
     public int numberOfObjects = 10;
     public float minDistanceBetweenObjects = 50f;
     public List<Vector3> backgroundObjectSpawnPositions = new List<Vector3>(); // 存储生成的位置
+    public GameObject timeFlag;
 
     public AudioSource audioSource1;// BGM
     public AudioSource audioSource2;// 倒计时音效
@@ -57,6 +58,7 @@ public class GlobalManager : MonoBehaviour
         groundStartTime = Time.time;
         PlaySound(audioSource1, "battleBGM");
         StartCoroutine(SpawnEnemyCoroutine());
+        timeFlag.GetComponent<ui_timeline_flag>().StartMove();
     }
 
     void Update()
@@ -196,6 +198,7 @@ public class GlobalManager : MonoBehaviour
         timeSlice += 1;
         isPlayCountDown = false;
         StopSound(audioSource2);
+        timeFlag.GetComponent<ui_timeline_flag>().StartMove();
         if (timeSlice % 5 == 0)// 每5次时间片就增加一次难度
         {
             float localScaleX = circleField.GetComponent<CircleField>().transform.localScale.x;
@@ -217,6 +220,7 @@ public class GlobalManager : MonoBehaviour
         enemyHP = 5;
         StopSound(audioSource2);
         PlaySound(audioSource1, "battleBGM");
+        timeFlag.GetComponent<ui_timeline_flag>().StartMove();
     }
 
     public void GameOver()

@@ -15,34 +15,44 @@ public class ui_statusbar : MonoBehaviour
     RectTransform mp_box;
 
     private GameObject player;
+    private PlayerMove playerMove;
+    private PlayerAttribute playerAttribute;
     bool is_move = false;
 
-    private void Start() {
+    void Start()
+    {
         hp = transform.Find("hp").GetComponent<Image>();
-        mp = transform.Find("mp").GetComponent<Image>(); 
+        mp = transform.Find("mp").GetComponent<Image>();
         hp_box = transform.Find("hp_box").GetComponent<RectTransform>();
         mp_box = transform.Find("mp_box").GetComponent<RectTransform>();
         player = GameObject.FindGameObjectWithTag("Player");
+        playerMove = player.GetComponent<PlayerMove>();
+        playerAttribute = player.GetComponent<PlayerAttribute>();
     }
 
-    void switch_mode() {
-        if (is_move) {
-            mp.material.SetColor("hp_base_color", magic_color);
-            mp.material.SetColor("hp_light_color", magic_light_color);
+    void switch_mode()
+    {
+        if (is_move)
+        {
+            mp.material.SetColor("_hp_base_color", magic_color);
+            mp.material.SetColor("_hp_light_color", magic_light_color);
         }
-        else {
-            mp.material.SetColor("hp_base_color", move_color);
-            mp.material.SetColor("hp_light_color", move_light_color);
+        else
+        {
+            mp.material.SetColor("_hp_base_color", move_color);
+            mp.material.SetColor("_hp_light_color", move_light_color);
         }
         is_move = !is_move;
     }
 
-    void update_ratio(float hp_ratio, float mp_ratio) {
-        hp.material.SetFloat("hp_ratio", hp_ratio);
-        mp.material.SetFloat("hp_ratio", mp_ratio);
+    void update_ratio(float hp_ratio, float mp_ratio)
+    {
+        hp.material.SetFloat("_hp_ratio", hp_ratio);
+        mp.material.SetFloat("_hp_ratio", mp_ratio);
     }
 
-    void update_pos(Image hp, RectTransform hp_box) {
+    void update_pos(Image hp, RectTransform hp_box)
+    {
         float bx_min = hp_box.rect.xMin;
         float bx_max = hp_box.rect.xMax;
         float bx_min_world = (hp_box.localToWorldMatrix * new Vector4(bx_min, 0, 0, 1)).x;
@@ -53,8 +63,10 @@ public class ui_statusbar : MonoBehaviour
         hp.material.SetFloat("_hp_max", bx_max_world);
     }
 
-    private void Update() {
-        update_ratio(player.GetComponent<PlayerAttribute>().HP, player.GetComponent<PlayerAttribute>().MP);
+    void Update()
+    {
+        update_ratio(playerAttribute.HP / (float)playerAttribute.MAXHP, playerMove.playerState == PlayerState.infiniteAttack ? playerAttribute.endurance / (float)playerAttribute.enduranceMAX : playerAttribute.MP / (float)playerAttribute.MAXMP);
+
         update_pos(hp, hp_box);
         update_pos(mp, mp_box);
     }
