@@ -108,7 +108,7 @@ public class PlayerMove : MonoBehaviour
         {
             globalManager.GetComponent<GlobalManager>().PlaySound(globalManager.GetComponent<GlobalManager>().audioSource3, "BulletNormal");
         }
-        else 
+        else
         {
             globalManager.GetComponent<GlobalManager>().PlaySound(globalManager.GetComponent<GlobalManager>().audioSource3, "BulletLess");
         }

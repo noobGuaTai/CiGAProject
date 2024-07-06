@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - GlobalManager
   layers:
   - Default
   - TransparentFX
@@ -53,4 +54,7 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 3829869365
+    locked: 0
+  - name: Player
+    uniqueID: 1388505877
     locked: 0

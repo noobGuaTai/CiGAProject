@@ -176,7 +176,7 @@ MonoBehaviour:
   speed: 40
   HP: 5
   potionPrefab: {fileID: 7151004024959247479, guid: 3439f096444b59e40a15b646267fdf5f, type: 3}
-  potionSpawnChance: 0.1
+  potionSpawnChance: 1
   attackInterval: 1
 --- !u!1 &3679331317321838191
 GameObject:

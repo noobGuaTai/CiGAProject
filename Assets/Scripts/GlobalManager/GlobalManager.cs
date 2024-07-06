@@ -16,20 +16,27 @@ public class GlobalManager : MonoBehaviour
     public float globalTime = 0f; // 总生存时间
     public float gameStartTime = 0f; // 游戏开始时间
     public int timeSlice = 0; // 经历的时间片个数
-    public bool isStart = false;
+    public int timeSliceRank = 0; // 游戏中所经历的最长生存的时间片
+    public bool isStart = false;// 游戏是否开始
     public Dictionary<string, AudioClip> soundClip;
     public GameObject sliderBGM;
+    public GameObject mainCamera;
+    public GameObject circleField;
+    public Vector3 circleFieldInitLocalScale;
+    public int enemyHP = 5;
 
     public AudioSource audioSource1;// BGM
     public AudioSource audioSource2;// 倒计时音效
     public AudioSource audioSource3;// 射击音效/子弹耗尽音效
+    public AudioSource audioSource4;// 捡起道具音效
 
-    private bool isPlayCountDown = false;
+    public bool isPlayCountDown = false;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         soundClip = new Dictionary<string, AudioClip>();
+        circleFieldInitLocalScale = circleField.transform.localScale;
         StartCoroutine(LoadSound("Effect"));
         StartCoroutine(LoadSound("BackgroundMusic"));
     }
@@ -38,6 +45,7 @@ public class GlobalManager : MonoBehaviour
     {
         isStart = true;
         gameStartTime = Time.time;
+        groundStartTime = Time.time;
         PlaySound(audioSource1, "battleBGM");
         StartCoroutine(SpawnEnemyCoroutine());
     }
@@ -47,12 +55,11 @@ public class GlobalManager : MonoBehaviour
         audioSource1.volume = sliderBGM.GetComponent<Slider>().value;
         if (isStart)
         {
-            groundTime = groundTotalTime - (Time.time - groundStartTime);
             if (groundTime <= 0)
             {
                 ReStartNextTimeSlice();
             }
-
+            groundTime = groundTotalTime - (Time.time - groundStartTime);
             if (groundTime <= 5)
             {
                 player.GetComponent<PlayerMove>().canChangeState = true;
@@ -63,7 +70,16 @@ public class GlobalManager : MonoBehaviour
                 }
 
             }
+            else
+            {
+                player.GetComponent<PlayerMove>().canChangeState = false;
+            }
             globalTime = Time.time - gameStartTime;
+
+            if (player.GetComponent<PlayerAttribute>().HP <= 0)
+            {
+                GameOver();
+            }
         }
     }
 
@@ -83,6 +99,7 @@ public class GlobalManager : MonoBehaviour
         Vector3 spawnPoint = player.transform.position + spawnDirection * spawnPointDistance;
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
         enemy.transform.SetParent(enemySet.transform);
+        enemy.GetComponent<EnemyMove>().HP = enemyHP;
     }
 
     IEnumerator LoadSound(string path)
@@ -124,6 +141,13 @@ public class GlobalManager : MonoBehaviour
         timeSlice += 1;
         isPlayCountDown = false;
         StopSound(audioSource2);
+        if (timeSlice % 5 == 0)// 每5次时间片就增加一次难度
+        {
+            float localScaleX = circleField.GetComponent<CircleField>().transform.localScale.x;
+            float localScaleY = circleField.GetComponent<CircleField>().transform.localScale.y;
+            circleField.GetComponent<CircleField>().transform.localScale = new Vector3(localScaleX - 50, localScaleY - 50, circleField.GetComponent<CircleField>().transform.localScale.z);
+            enemyHP += 5;
+        }
     }
 
     public void ResetGame()
@@ -133,7 +157,15 @@ public class GlobalManager : MonoBehaviour
         globalTime = 0f;
         gameStartTime = Time.time;
         timeSlice = 0;
+        circleField.transform.localScale = circleFieldInitLocalScale;
+        enemyHP = 5;
         StopSound(audioSource2);
         PlaySound(audioSource1, "battleBGM");
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        timeSliceRank = timeSliceRank < timeSlice ? timeSlice : timeSliceRank;
     }
 }
