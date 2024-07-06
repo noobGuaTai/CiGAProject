@@ -24,16 +24,19 @@ public class PlayerMove : MonoBehaviour
     private Vector2 moveInput;
     private PlayerAttribute playerAttribute;
     private float shootTimer = 0f;
-    private Animator animator;
-
+    public Animator animator;
+    
     public delegate void OnPlayerChangeStateType(PlayerMove who);
     public OnPlayerChangeStateType OnPlayerChangeState;
+    private Animator changeStateAnimator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerAttribute = GetComponent<PlayerAttribute>();
         playerState = PlayerState.infiniteMove;
+        changeStateAnimator = transform.Find("ChangeState").GetComponent<Animator>();
     }
 
 
@@ -135,15 +138,16 @@ public class PlayerMove : MonoBehaviour
             if (playerState == PlayerState.infiniteMove)
             {
                 playerState = PlayerState.infiniteAttack;
+                changeStateAnimator.Play("MoveChange");
                 animator.SetBool("attack", true);
             }
             else
             {
                 playerState = PlayerState.infiniteMove;
+                changeStateAnimator.Play("AttackChange");
                 animator.SetBool("attack", false);
             }
             globalManager.GetComponent<GlobalManager>().ReStartNextTimeSlice();
-
             OnPlayerChangeState.Invoke(this);
         }
     }

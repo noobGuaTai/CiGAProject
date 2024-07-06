@@ -38,6 +38,8 @@ public class ui_statusbar : MonoBehaviour
         exp_image = transform.Find("exp").GetComponent<Image>();
         var player_move = player.GetComponent <PlayerMove>();
         player_move.OnPlayerChangeState += on_switch_mode;
+        hp.material.SetFloat("_hp_ratio", 1f);
+        mp.material.SetFloat("_hp_ratio", 1f);
 
         playerAttribute.on_gain_exp += on_gain_exp;
     }

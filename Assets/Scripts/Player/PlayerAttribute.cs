@@ -24,12 +24,14 @@ public class PlayerAttribute : MonoBehaviour
     public float underAttackInterval = 1f;
 
     private float lastUnderAttackTime = 0f;
+    private Animator levelUpAnimator;
 
     public delegate void OnGainExpType(PlayerAttribute who);
     public OnGainExpType on_gain_exp;
 
     private void Start() {
         ToNextLevelEXP = get_next_level_exp(Level);
+        levelUpAnimator = transform.Find("LevelUp").GetComponent<Animator>();
     }
 
     int get_next_level_exp(int level) {
@@ -42,6 +44,7 @@ public class PlayerAttribute : MonoBehaviour
             EXP -= ToNextLevelEXP;
             Level += 1;
             ToNextLevelEXP = get_next_level_exp(Level);
+            levelUpAnimator.Play("LevelUp");
         }
         on_gain_exp.Invoke(this);
     }

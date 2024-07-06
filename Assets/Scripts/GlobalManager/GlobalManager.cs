@@ -154,7 +154,7 @@ public class GlobalManager : MonoBehaviour
         enemy.transform.SetParent(enemySet.transform);
 
         var em = enemy.GetComponent<EnemyMove>();
-        em.HP = enemyHP;
+        // em.HP = enemyHP;
         em.globalManager = this;
         ememyLive++;
     }
@@ -233,7 +233,7 @@ public class GlobalManager : MonoBehaviour
             float localScaleX = circleField.GetComponent<CircleField>().transform.localScale.x;
             float localScaleY = circleField.GetComponent<CircleField>().transform.localScale.y;
             circleField.GetComponent<CircleField>().transform.localScale = new Vector3(localScaleX - 50, localScaleY - 50, circleField.GetComponent<CircleField>().transform.localScale.z);
-            enemyHP += 5;
+            // enemyHP += 5;
             enemySpawnInterval = enemySpawnInterval > 0.1f ? enemySpawnInterval - 0.1f : enemySpawnInterval;
             player.GetComponent<PlayerMove>().moveSpeed += 2;
         }
@@ -247,6 +247,9 @@ public class GlobalManager : MonoBehaviour
         player.transform.position = Vector2.zero;
         player.GetComponent<PlayerAttribute>().HP = player.GetComponent<PlayerAttribute>().MAXHP;
         player.GetComponent<PlayerMove>().canChangeState = false;
+        player.GetComponent<PlayerMove>().animator.speed = 1f;
+        player.GetComponent<PlayerAttribute>().Level = 0;
+        player.GetComponent<PlayerAttribute>().ToNextLevelEXP = 0;
         groundStartTime = Time.time;
         groundTotalTime = 20f;
         globalTime = 0f;
@@ -260,6 +263,7 @@ public class GlobalManager : MonoBehaviour
         StopSound(audioSource2);
         PlaySound(audioSource1, "battleBGM");
         timeFlag.GetComponent<ui_timeline_flag>().ResetMove();
+        StartCoroutine(SpawnEnemyCoroutine());
         foreach (Transform child in enemySet.transform)
         {
             Destroy(child.gameObject);
@@ -287,6 +291,9 @@ public class GlobalManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         player.GetComponent<PlayerAttribute>().HP = player.GetComponent<PlayerAttribute>().MAXHP;
         player.GetComponent<PlayerMove>().canChangeState = false;
+        player.GetComponent<PlayerMove>().animator.speed = 1f;
+        player.GetComponent<PlayerAttribute>().Level = 0;
+        player.GetComponent<PlayerAttribute>().ToNextLevelEXP = 0;
         groundStartTime = Time.time;
         groundTotalTime = 20f;
         globalTime = 0f;
