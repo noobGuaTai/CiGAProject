@@ -5,43 +5,43 @@ using UnityEngine;
 public class CircleField : MonoBehaviour
 {
     public GameObject player;
-    public Transform[] movePoints;
+    public float topDownBorder = 200f;
+    public float leftRightBorder = 300f;
     public float moveSpeed = 5f;
+    public float moveDistance = 50f;
     public int ATK = 1;
-    private int currentPointIndex;
+    public Vector3 targetPoint;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        if (movePoints.Length > 0)
-        {
-            // currentPointIndex = Random.Range(0, movePoints.Length);
-            currentPointIndex = 0;
-            transform.position = movePoints[currentPointIndex].position;
-        }
+        SelectRandomTargetPoint();
     }
 
     void Update()
     {
-        if (movePoints.Length > 0)
-        {
-            MoveToNextPoint();
-        }
+        MoveToTargetPoint();
     }
 
-    void MoveToNextPoint()
+    void SelectRandomTargetPoint()
     {
-        Transform targetPoint = movePoints[currentPointIndex];
-        transform.position = Vector3.MoveTowards(transform.position, targetPoint.position, moveSpeed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, targetPoint.position) < 0.1f)
-        {
-            int newPointIndex;
-            do
-            {
-                newPointIndex = Random.Range(0, movePoints.Length);
-            } while (newPointIndex == currentPointIndex);
+        Vector2 randomDirection = Random.insideUnitCircle.normalized; // 随机方向
+        Vector3 potentialTarget = transform.position + (Vector3)(randomDirection * moveDistance);
 
-            currentPointIndex = newPointIndex;
+        // 确保目标点在边界内并与边界保持一定距离
+        potentialTarget.x = Mathf.Clamp(potentialTarget.x, -leftRightBorder, leftRightBorder);
+        potentialTarget.y = Mathf.Clamp(potentialTarget.y, -topDownBorder, topDownBorder);
+
+        targetPoint = potentialTarget;
+    }
+
+    void MoveToTargetPoint()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, targetPoint, moveSpeed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, targetPoint) < 0.1f)
+        {
+            SelectRandomTargetPoint();
         }
     }
 
