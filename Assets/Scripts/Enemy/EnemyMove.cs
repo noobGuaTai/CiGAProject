@@ -40,6 +40,15 @@ public class EnemyMove : MonoBehaviour
             Vector3 direction = (player.transform.position - transform.position).normalized;
             Vector3 moveAmount = direction * speed * Time.deltaTime;
             transform.position += moveAmount;
+
+            if ((player.transform.position - transform.position).x > 0)
+            {
+                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
         }
     }
 

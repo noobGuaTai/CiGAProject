@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MainPageManager : MonoBehaviour
 {
-    public GameObject gameSettingsCanvas;
+    public GameObject gameSettingsPanel;
     public GameObject sliderBGM;
     public Dictionary<string, AudioClip> soundClip;
     public GameObject globalManager;
@@ -42,12 +42,12 @@ public class MainPageManager : MonoBehaviour
 
     public void OpenSettings()
     {
-        gameSettingsCanvas.SetActive(true);
+        gameSettingsPanel.SetActive(true);
     }
 
     public void CloseSettings()
     {
-        gameSettingsCanvas.SetActive(false);
+        gameSettingsPanel.SetActive(false);
     }
 
 }

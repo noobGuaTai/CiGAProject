@@ -13,6 +13,8 @@ public class ui_statusbar : MonoBehaviour
     Image mp;
     RectTransform hp_box;
     RectTransform mp_box;
+
+    private GameObject player;
     bool is_move = false;
 
     private void Start() {
@@ -20,6 +22,7 @@ public class ui_statusbar : MonoBehaviour
         mp = transform.Find("mp").GetComponent<Image>(); 
         hp_box = transform.Find("hp_box").GetComponent<RectTransform>();
         mp_box = transform.Find("mp_box").GetComponent<RectTransform>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void switch_mode() {
@@ -51,6 +54,7 @@ public class ui_statusbar : MonoBehaviour
     }
 
     private void Update() {
+        update_ratio(player.GetComponent<PlayerAttribute>().HP, player.GetComponent<PlayerAttribute>().MP);
         update_pos(hp, hp_box);
         update_pos(mp, mp_box);
     }
