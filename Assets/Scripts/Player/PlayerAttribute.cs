@@ -43,6 +43,7 @@ public class PlayerAttribute : MonoBehaviour
     {
         if (Time.time - lastUnderAttackTime > underAttackInterval)
         {
+            lastUnderAttackTime = Time.time;
             HP += value;
             if (HP < 0)
             {
