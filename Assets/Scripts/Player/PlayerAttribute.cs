@@ -9,6 +9,8 @@ public class PlayerAttribute : MonoBehaviour
     public int MP = 10;
     public int MAXMP = 10;
     public int ATK = 10;
+    public int EXP = 0;
+    
     public float endurance = 1000f;
     public float enduranceMAX = 1000f;
     public bool isInCircleField = true;

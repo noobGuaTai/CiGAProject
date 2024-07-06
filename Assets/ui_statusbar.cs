@@ -20,18 +20,22 @@ public class ui_statusbar : MonoBehaviour
     bool is_move = true;
     float cnt_hp_ratio = 1.0f;
     float tar_hp_ratio = 1.0f;
+    Image exp_image;
     Tween tween;
     Tween tween2;
+    Tween tween_exp;
+    
     void Start()
     {
         tween = GetComponent<Tween>();
         tween2 = gameObject.AddComponent<Tween>();
+        tween_exp = gameObject.AddComponent<Tween>();
         hp = transform.Find("hp").GetComponent<Image>();
         mp = transform.Find("mp").GetComponent<Image>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerMove = player.GetComponent<PlayerMove>();
         playerAttribute = player.GetComponent<PlayerAttribute>();
-
+        exp_image = transform.Find("exp").GetComponent<Image>();
         var player_move = player.GetComponent <PlayerMove>();
         player_move.OnPlayerChangeState += on_switch_mode;
     }
@@ -88,6 +92,7 @@ public class ui_statusbar : MonoBehaviour
        //hp.material.SetFloat("_hp_max", bx_max_world);
     }
 
+    
     void Update()
     {
         update_ratio(
@@ -100,4 +105,18 @@ public class ui_statusbar : MonoBehaviour
         //update_pos(mp, mp_box);
     }
 
+
+    float tar_exp_ratio;
+    
+
+    void update_exp(float exp_ratio) {
+        if (exp_ratio != tar_exp_ratio) {
+            tween_exp.Clear();
+            tween_exp.AddTween<float>((float a) => {
+                exp_image.fillAmount = a;
+            }, tar_exp_ratio, exp_ratio, 0.1f);
+            tar_exp_ratio = exp_ratio;
+            tween_exp.Play();
+        }
+    }
 }
