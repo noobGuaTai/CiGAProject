@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f7387f6ccf3299841b0f2c7f6e8a1f0c
+guid: 95ef8072124341d48a535827d7ddc4ee
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,118 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: hit-effect-1_Frame_0
+  - name: tile_Frame_0
     originalName: 
-    pivot: {x: 0.75, y: -0.8333334}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 23
-      y: 47
-      width: 12
-      height: 6
-    spriteID: aa6d48d23ae5e354f9440f9e49d7ec80
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 23, y: 47}
-  - name: hit-effect-1_Frame_1
-    originalName: 
-    pivot: {x: 0.5, y: -0.5}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 51
-      y: 26
-      width: 8
-      height: 8
-    spriteID: be5386dd331a46549a1fc77acd3f58e6
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 51, y: 26}
-  - name: hit-effect-1_Frame_2
-    originalName: 
-    pivot: {x: 0.54545456, y: -0.18181819}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 47
-      width: 11
-      height: 11
-    spriteID: eec572bcdbf6bd547ad062ec04add451
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 47}
-  - name: hit-effect-1_Frame_3
-    originalName: 
-    pivot: {x: 0.6, y: -0.16666667}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 28
-      y: 26
-      width: 15
-      height: 12
-    spriteID: d466a397bcd1a1f408644d919fe8525d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 28, y: 26}
-  - name: hit-effect-1_Frame_4
-    originalName: 
-    pivot: {x: 0.5625, y: -0.07692308}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 26
-      width: 16
-      height: 13
-    spriteID: 5b4352dce3de5fc4f99529c47d7137a9
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 26}
-  - name: hit-effect-1_Frame_5
-    originalName: 
-    pivot: {x: 0.6, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 28
+      x: 84
       y: 4
-      width: 15
-      height: 14
-    spriteID: 11484f15d8a794a47bd31105b8c3a3fc
+      width: 64
+      height: 64
+    spriteID: f8d9d7681e840a34da33449405534c88
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -240,19 +140,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 28, y: 4}
-  - name: hit-effect-1_Frame_6
+    uvTransform: {x: 84, y: 4}
+  - name: tile_Frame_1
     originalName: 
-    pivot: {x: 0.5625, y: 0}
+    pivot: {x: 0.47222224, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 14
-    spriteID: dc4c94a1ea2d1524b9fae5b7dc2f5031
+      width: 72
+      height: 65
+    spriteID: 2d178ab81bf4ab049aa45fbbf19c55ec
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -261,75 +161,175 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: tile_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 156
+      y: 4
+      width: 64
+      height: 64
+    spriteID: 1a590838823d9bc4f9214ebfe515661a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 156, y: 4}
+  - name: tile_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 77
+      width: 64
+      height: 64
+    spriteID: d17872cc3fa49e54aa760c6af57f5cd8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 77}
+  - name: tile_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 76
+      y: 77
+      width: 64
+      height: 64
+    spriteID: 9d48ffa63f7f26141bd174a8f8651bdc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 76, y: 77}
+  - name: tile_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 148
+      y: 77
+      width: 64
+      height: 64
+    spriteID: 5f69ed06ec7327a4997f397c0dcddf2f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 148, y: 77}
+  - name: tile_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 149
+      width: 64
+      height: 64
+    spriteID: ecafc00eb64100f4880d82ccf289fdf3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 149}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1463520587
-    name: hit-effect-1
+    guid: -1754471870
+    name: tile
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: hit-effect-1_Frame_0
+    - name: tile_Frame_0
       frameIndex: 0
       cellRect:
-        x: -1
-        y: 5
-        width: 12
-        height: 6
-      spriteId: aa6d48d23ae5e354f9440f9e49d7ec80
-    - name: hit-effect-1_Frame_1
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      spriteId: f8d9d7681e840a34da33449405534c88
+    - name: tile_Frame_1
       frameIndex: 1
       cellRect:
-        x: 4
-        y: 4
-        width: 8
-        height: 8
-      spriteId: be5386dd331a46549a1fc77acd3f58e6
-    - name: hit-effect-1_Frame_2
+        x: -2
+        y: 0
+        width: 72
+        height: 65
+      spriteId: 2d178ab81bf4ab049aa45fbbf19c55ec
+    - name: tile_Frame_2
       frameIndex: 2
       cellRect:
-        x: 2
-        y: 2
-        width: 11
-        height: 11
-      spriteId: eec572bcdbf6bd547ad062ec04add451
-    - name: hit-effect-1_Frame_3
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      spriteId: 1a590838823d9bc4f9214ebfe515661a
+    - name: tile_Frame_3
       frameIndex: 3
       cellRect:
-        x: -1
-        y: 2
-        width: 15
-        height: 12
-      spriteId: d466a397bcd1a1f408644d919fe8525d
-    - name: hit-effect-1_Frame_4
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      spriteId: d17872cc3fa49e54aa760c6af57f5cd8
+    - name: tile_Frame_4
       frameIndex: 4
       cellRect:
-        x: -1
-        y: 1
-        width: 16
-        height: 13
-      spriteId: 5b4352dce3de5fc4f99529c47d7137a9
-    - name: hit-effect-1_Frame_5
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      spriteId: 9d48ffa63f7f26141bd174a8f8651bdc
+    - name: tile_Frame_5
       frameIndex: 5
       cellRect:
-        x: -1
+        x: 0
         y: 0
-        width: 15
-        height: 14
-      spriteId: 11484f15d8a794a47bd31105b8c3a3fc
-    - name: hit-effect-1_Frame_6
+        width: 64
+        height: 64
+      spriteId: 5f69ed06ec7327a4997f397c0dcddf2f
+    - name: tile_Frame_6
       frameIndex: 6
       cellRect:
-        x: -1
+        x: 0
         y: 0
-        width: 16
-        height: 14
-      spriteId: dc4c94a1ea2d1524b9fae5b7dc2f5031
+        width: 64
+        height: 64
+      spriteId: ecafc00eb64100f4880d82ccf289fdf3
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 16}
+  canvasSize: {x: 64, y: 64}

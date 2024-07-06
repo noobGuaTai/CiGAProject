@@ -29,8 +29,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _hp_max: -145.1248
-    - _hp_min: -227.12482
+    - _hp_max: -69.99999
+    - _hp_min: -152
     - _hp_ratio: 0.679
     m_Colors:
     - _hp_base_color: {r: 0.19550726, g: 0.3302034, b: 0.4264151, a: 0}
