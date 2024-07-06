@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerAttribute : MonoBehaviour
@@ -10,7 +11,9 @@ public class PlayerAttribute : MonoBehaviour
     public int MAXMP = 10;
     public int ATK = 10;
     public int EXP = 0;
-    
+    public int Level = 0;
+    public int ToNextLevelEXP = 0; 
+
     public float endurance = 1000f;
     public float enduranceMAX = 1000f;
     public bool isInCircleField = true;
@@ -21,10 +24,27 @@ public class PlayerAttribute : MonoBehaviour
     public float underAttackInterval = 1f;
 
     private float lastUnderAttackTime = 0f;
-    
 
+    public delegate void OnGainExpType(PlayerAttribute who);
+    public OnGainExpType on_gain_exp;
 
+    private void Start() {
+        ToNextLevelEXP = get_next_level_exp(Level);
+    }
 
+    int get_next_level_exp(int level) {
+        return (int)math.pow(level, 1.5f) + level;
+    }
+
+    public void gain_exp() {
+        EXP += 1;
+        if (EXP >= ToNextLevelEXP) {
+            EXP -= ToNextLevelEXP;
+            Level += 1;
+            ToNextLevelEXP = get_next_level_exp(Level);
+        }
+        on_gain_exp.Invoke(this);
+    }
 
     void Update()
     {

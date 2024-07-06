@@ -75,5 +75,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _cam_direction: {r: -8.805679, g: 307.73138, b: 0, a: 0}
+    - _cam_direction: {r: -38.782883, g: -233.28232, b: 0, a: 0}
   m_BuildTextureStacks: []

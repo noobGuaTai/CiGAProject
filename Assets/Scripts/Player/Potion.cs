@@ -19,7 +19,8 @@ public class Potion : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             globalManager.GetComponent<GlobalManager>().PlaySound(globalManager.GetComponent<GlobalManager>().audioSource4, "PickOption");
-            other.GetComponent<PlayerAttribute>().ATK += 1;
+            //other.GetComponent<PlayerAttribute>().ATK += 1;
+            player.GetComponent<PlayerAttribute>().gain_exp();
             Destroy(gameObject);
         }
     }
