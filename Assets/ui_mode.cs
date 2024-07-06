@@ -11,7 +11,27 @@ public class ui_mode : MonoBehaviour
     public Sprite move;
     public Sprite magic;
     public Image image;
+
     bool is_move = false;
+    private GameObject player;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void Update()
+    {
+        if(player.GetComponent<PlayerMove>().playerState == PlayerState.infiniteMove)
+        {
+            image.sprite = move;
+        }
+        else
+        {
+            image.sprite = magic;
+        }
+    }
+
     void switch_mode() { 
         if(is_move) {
             image.sprite = magic;

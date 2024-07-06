@@ -23,10 +23,12 @@ public class PlayerMove : MonoBehaviour
     private Vector2 moveInput;
     private PlayerAttribute playerAttribute;
     private float shootTimer = 0f;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         playerAttribute = GetComponent<PlayerAttribute>();
         playerState = PlayerState.infiniteMove;
     }
@@ -55,7 +57,13 @@ public class PlayerMove : MonoBehaviour
                 Shoot();
                 shootTimer = shootCoolDown;
                 playerAttribute.MP -= 1;
+                animator.SetBool("attack", true);
             }
+            else
+            {
+                animator.SetBool("attack", false);
+            }
+            
             if (Input.GetMouseButtonDown(0) && playerAttribute.MP == 0)
             {
                 globalManager.GetComponent<GlobalManager>().PlaySound(globalManager.GetComponent<GlobalManager>().audioSource3, "BulletOverShoot");
