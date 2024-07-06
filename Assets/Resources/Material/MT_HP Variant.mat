@@ -25,9 +25,9 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _hp_max: -10.371116
-    - _hp_min: -80.371124
-    - _hp_ratio: 0.9
+    - _hp_max: -361.88852
+    - _hp_min: -431.88852
+    - _hp_ratio: 1
     m_Colors:
     - _hp_base_color: {r: 0.4415095, g: 0.19243148, b: 0.19243148, a: 0}
   m_BuildTextureStacks: []
