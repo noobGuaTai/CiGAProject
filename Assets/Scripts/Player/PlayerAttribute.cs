@@ -15,6 +15,8 @@ public class PlayerAttribute : MonoBehaviour
     public GameObject circleField;
     public float circleFieldAttackInterval = 1f;
     public float underAttackTime = 0f;
+    public GameObject globalManager;
+
     void Start()
     {
 

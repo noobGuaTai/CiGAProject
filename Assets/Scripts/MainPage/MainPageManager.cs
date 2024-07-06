@@ -8,6 +8,7 @@ public class MainPageManager : MonoBehaviour
     public GameObject gameSettingsCanvas;
     public GameObject sliderBGM;
     public Dictionary<string, AudioClip> soundClip;
+    public GameObject globalManager;
 
     private AudioSource audioSource;
 
@@ -46,6 +47,12 @@ public class MainPageManager : MonoBehaviour
     {
         audioSource.clip = soundClip[clipName];
         audioSource.Play();
+    }
+
+    public void StartGame()
+    {
+        gameObject.SetActive(false);
+        globalManager.GetComponent<GlobalManager>().StartGame();
     }
 
     public void QuitGame()

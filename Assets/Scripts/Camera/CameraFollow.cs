@@ -9,7 +9,6 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
-        // 计算初始偏移量
         offset = transform.position - target.position;
     }
 

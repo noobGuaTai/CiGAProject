@@ -22,10 +22,7 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private PlayerAttribute playerAttribute;
-    private float shootTimer;
-    private Vector2[] possibleDirections = { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
-    private Vector2 selectedDirection1;
-    private Vector2 selectedDirection2;
+    private float shootTimer = 0f;
 
     void Start()
     {
@@ -37,31 +34,39 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
-        moveInput.Normalize();
-        if (playerState == PlayerState.infiniteMove)
+        if (globalManager.GetComponent<GlobalManager>().isStart)
         {
-            InfiniteMove();
-            playerAttribute.endurance = playerAttribute.enduranceMAX;
-        }
-        else
-        {
-            FiniteMove();
-            playerAttribute.MP = 10;
+            moveInput.x = Input.GetAxisRaw("Horizontal");
+            moveInput.y = Input.GetAxisRaw("Vertical");
+            moveInput.Normalize();
+            if (playerState == PlayerState.infiniteMove)
+            {
+                InfiniteMove();
+                playerAttribute.endurance = playerAttribute.enduranceMAX;
+            }
+            else
+            {
+                FiniteMove();
+                playerAttribute.MP = 10;
+            }
+
+            if (Input.GetMouseButton(0) && shootTimer <= 0 && playerAttribute.MP >= 1)
+            {
+                Shoot();
+                shootTimer = shootCoolDown;
+                playerAttribute.MP -= 1;
+            }
+            if (Input.GetMouseButtonDown(0) && playerAttribute.MP == 0)
+            {
+                globalManager.GetComponent<GlobalManager>().PlaySound(globalManager.GetComponent<GlobalManager>().audioSource3, "BulletOverShoot");
+            }
+            if (shootTimer > 0)
+            {
+                shootTimer -= Time.deltaTime;
+            }
+            ChangeState();
         }
 
-        if (Input.GetMouseButton(0) && shootTimer <= 0 && playerAttribute.MP >= 1)
-        {
-            Shoot();
-            shootTimer = shootCoolDown;
-            playerAttribute.MP -= 1;
-        }
-        if (shootTimer > 0)
-        {
-            shootTimer -= Time.deltaTime;
-        }
-        ChangeState();
     }
 
     void InfiniteMove()
@@ -99,6 +104,14 @@ public class PlayerMove : MonoBehaviour
 
     void Shoot()
     {
+        if (playerAttribute.MP > 3)
+        {
+            globalManager.GetComponent<GlobalManager>().PlaySound(globalManager.GetComponent<GlobalManager>().audioSource3, "BulletNormal");
+        }
+        else 
+        {
+            globalManager.GetComponent<GlobalManager>().PlaySound(globalManager.GetComponent<GlobalManager>().audioSource3, "BulletLess");
+        }
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
         Vector3 shootDirection = (mousePosition - transform.position).normalized;
@@ -120,8 +133,7 @@ public class PlayerMove : MonoBehaviour
             {
                 playerState = PlayerState.infiniteMove;
             }
-            globalManager.GetComponent<GlobalManager>().groundStartTime = Time.time;
-            globalManager.GetComponent<GlobalManager>().timeSlice += 1;
+            globalManager.GetComponent<GlobalManager>().ReStartNextTimeSlice();
         }
     }
 

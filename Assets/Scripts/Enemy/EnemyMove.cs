@@ -14,7 +14,7 @@ public class EnemyMove : MonoBehaviour
 
     void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()

@@ -10,7 +10,7 @@ public class CircleField : MonoBehaviour
     public float moveSpeed = 5f;
     public float moveDistance = 50f;
     public int ATK = 1;
-    private Vector3 targetPoint;
+    public Vector3 targetPoint;
 
     void Start()
     {
