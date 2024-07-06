@@ -8,9 +8,9 @@ public class GlobalManager : MonoBehaviour
 {
     public GameObject player;
     public GameObject enemyPrefab;
-    public float spawnPointDistance = 100f;
+    public float spawnPointDistance = 220;
     public GameObject enemySet;
-    public float enemySpawnInterval = 2f;
+    public float enemySpawnInterval = 0.2f;
     public float enemySpawnIntervalInit = 2f;
     public float groundTime; // 当前时间片时间
     public float groundStartTime; // 当前时间片开始时间
@@ -27,6 +27,8 @@ public class GlobalManager : MonoBehaviour
     public Vector3 circleFieldInitLocalScale;
     public int enemyHP = 5;
     public float enemySpeed = 5;
+    public int ememyLive = 0;
+
     public float topDownBorder = 300f;//地图边界
     public float leftRightBorder = 400f;
     public GameObject backgroundObject1;
@@ -129,10 +131,19 @@ public class GlobalManager : MonoBehaviour
     {
         while (isStart)
         {
-            SpawnEnemy();
+            if(isStart && ememyLive < get_max_enemy())
+                SpawnEnemy();
             yield return new WaitForSeconds(enemySpawnInterval);
+            
         }
     }
+
+
+    int get_max_enemy() {
+        return (int)Unity.Mathematics.math.pow(timeSlice, 1.5) + timeSlice + 2;
+    }
+
+
 
     void SpawnEnemy()
     {
@@ -141,7 +152,15 @@ public class GlobalManager : MonoBehaviour
         Vector3 spawnPoint = player.transform.position + spawnDirection * spawnPointDistance;
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
         enemy.transform.SetParent(enemySet.transform);
-        enemy.GetComponent<EnemyMove>().HP = enemyHP;
+
+        var em = enemy.GetComponent<EnemyMove>();
+        em.HP = enemyHP;
+        em.globalManager = this;
+        ememyLive++;
+    }
+
+    public void on_enemy_dead(EnemyMove who) {
+        ememyLive--;
     }
 
     IEnumerator LoadSound(string path)

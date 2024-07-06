@@ -7,11 +7,13 @@ public class EnemyMove : MonoBehaviour
     public float speed = 100f;
     public int HP = 5;
     public GameObject potionPrefab;
+    public GlobalManager globalManager;
     public float potionSpawnChance = 0.1f;
     public float attackInterval = 1f;
+    public float disappearDistance = 300f;
 
     private float lastAttackTime = 0f;
-
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -28,6 +30,15 @@ public class EnemyMove : MonoBehaviour
                 GameObject potion = Instantiate(potionPrefab, transform.position, Quaternion.identity);
                 potion.GetComponent<Potion>().Drop(transform.position);
             }
+            globalManager.on_enemy_dead(this);
+            Destroy(gameObject);
+            return;
+        }
+
+        var ofv = player.transform.position - transform.position;
+        var dis = ofv.x * ofv.x + ofv.y * ofv.y + ofv.z *  ofv.z;
+        if (dis > disappearDistance * disappearDistance) {
+            globalManager.on_enemy_dead(this);
             Destroy(gameObject);
         }
     }
