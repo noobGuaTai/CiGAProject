@@ -45,7 +45,7 @@ public class GlobalManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         soundClip = new Dictionary<string, AudioClip>();
         circleFieldInitLocalScale = circleField.transform.localScale;
-        SpawnBackgroundObjects();
+        // SpawnBackgroundObjects();
         StartCoroutine(LoadSound("Effect"));
         StartCoroutine(LoadSound("BackgroundMusic"));
     }
