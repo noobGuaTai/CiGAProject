@@ -96,8 +96,8 @@ public class ui_statusbar : MonoBehaviour
             playerAttribute.endurance / (float)playerAttribute.enduranceMAX : 
             playerAttribute.MP / (float)playerAttribute.MAXMP);
 
-        update_pos(hp, hp_box);
-        update_pos(mp, mp_box);
+        //update_pos(hp, hp_box);
+        //update_pos(mp, mp_box);
     }
 
 }
