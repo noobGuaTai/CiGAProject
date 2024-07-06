@@ -16,6 +16,7 @@ public class PlayerAttribute : MonoBehaviour
     public float circleFieldAttackInterval = 1f;
     public float underAttackTime = 0f;
     public GameObject globalManager;
+    public float underAttackInterval = 1f;
 
     private float lastUnderAttackTime = 0f;
 
@@ -40,16 +41,17 @@ public class PlayerAttribute : MonoBehaviour
 
     public void ChangeHP(int value)
     {
-        
-        HP += value;
-        if (HP < 0)
+        if (Time.time - lastUnderAttackTime > underAttackInterval)
         {
-            HP = 0;
+            HP += value;
+            if (HP < 0)
+            {
+                HP = 0;
+            }
+            if (HP > MAXHP)
+            {
+                HP = MAXHP;
+            }
         }
-        if (HP > MAXHP)
-        {
-            HP = MAXHP;
-        }
-
     }
 }

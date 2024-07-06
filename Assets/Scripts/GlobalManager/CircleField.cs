@@ -11,7 +11,7 @@ public class CircleField : MonoBehaviour
     public float moveDistance = 50f;
     public float moveDuration = 20f; // 持续时间
     public int ATK = 1;
-    private Vector3 targetPoint;
+    public Vector3 targetPoint;
     private Coroutine moveCoroutine;
 
     void Start()
