@@ -148,8 +148,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 44
-      y: 4
+      x: 42
+      y: 24
       width: 10
       height: 11
     spriteID: b2cccabed7bace542a68da01d7e3fd89
@@ -160,7 +160,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 44, y: 4}
+    uvTransform: {x: 42, y: 24}
   - name: button-icon_Frame_2
     originalName: 
     pivot: {x: 0.5, y: -0.16666667}
@@ -168,7 +168,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
+      x: 26
       y: 4
       width: 12
       height: 12
@@ -180,7 +180,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 26, y: 4}
   - name: button-icon_Frame_3
     originalName: 
     pivot: {x: 0.5, y: -0.3}
@@ -188,8 +188,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 24
-      y: 4
+      x: 22
+      y: 24
       width: 12
       height: 10
     spriteID: efa41b9ffbb1da041985eca24941ff33
@@ -200,7 +200,47 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 24, y: 4}
+    uvTransform: {x: 22, y: 24}
+  - name: button-icon_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: -0.16666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 14
+      height: 12
+    spriteID: 147781f7ee67faa45959821221472276
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: button-icon_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: -0.27272728}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 46
+      y: 4
+      width: 12
+      height: 11
+    spriteID: 1d3c8ac6d47cfee46849894cc854c7e0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 46, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -242,6 +282,22 @@ ScriptedImporter:
         width: 12
         height: 10
       spriteId: efa41b9ffbb1da041985eca24941ff33
+    - name: button-icon_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 1
+        y: 2
+        width: 14
+        height: 12
+      spriteId: 147781f7ee67faa45959821221472276
+    - name: button-icon_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 2
+        y: 3
+        width: 12
+        height: 11
+      spriteId: 1d3c8ac6d47cfee46849894cc854c7e0
     linkedCells: []
     parentIndex: -1
   platformSettings: []

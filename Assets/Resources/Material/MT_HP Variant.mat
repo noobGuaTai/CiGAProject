@@ -27,8 +27,8 @@ Material:
     m_Floats:
     - _hp_max: -63.42739
     - _hp_min: -133.4274
-    - _hp_ratio: 0.095349394
-    - _white_ratio: 0.9534939
+    - _hp_ratio: 0.08711681
+    - _white_ratio: 0.8711681
     m_Colors:
     - _hp_base_color: {r: 0.4415095, g: 0.19243148, b: 0.19243148, a: 0}
   m_BuildTextureStacks: []
