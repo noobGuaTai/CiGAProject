@@ -98,6 +98,11 @@ public class GlobalManager : MonoBehaviour
     void Update()
     {
         audioSource1.volume = sliderBGM.GetComponent<Slider>().value;
+        audioSource2.volume = sliderBGM.GetComponent<Slider>().value;
+        audioSource3.volume = sliderBGM.GetComponent<Slider>().value;
+        audioSource4.volume = sliderBGM.GetComponent<Slider>().value;
+        audioSource5.volume = sliderBGM.GetComponent<Slider>().value;
+        
         if (isStart)
         {
             if (groundTime <= 0)
@@ -147,7 +152,7 @@ public class GlobalManager : MonoBehaviour
 
     int get_max_enemy()
     {
-        return (int)Unity.Mathematics.math.pow(timeSlice, 1.5) + timeSlice + 2;
+        return (int)Unity.Mathematics.math.pow(timeSlice, 1.5) + timeSlice + 1;
     }
 
 
@@ -239,8 +244,8 @@ public class GlobalManager : MonoBehaviour
         timeFlag.GetComponent<ui_timeline_flag>().ResetMove();
         if (timeSlice % 2 == 0 && circleField.GetComponent<CircleCollider2D>().radius > 100f)// 每2次时间片就增加一次难度
         {
-            StartCoroutine(SmoothScaleCircleField(-20, 5f));
-            // enemySpawnInterval = enemySpawnInterval > 0.1f ? enemySpawnInterval - 0.1f : enemySpawnInterval;
+            StartCoroutine(SmoothScaleCircleField(-10, 5f));
+            enemySpawnInterval = enemySpawnInterval > 0.1f ? enemySpawnInterval - 0.1f : enemySpawnInterval;
             // player.GetComponent<PlayerMove>().moveSpeed += 2;
         }
     }
@@ -277,7 +282,9 @@ public class GlobalManager : MonoBehaviour
         player.GetComponent<PlayerAttribute>().ToNextLevelEXP = 0;
         player.GetComponent<PlayerAttribute>().ATK = player.GetComponent<PlayerAttribute>().initATK;
         player.GetComponent<PlayerAttribute>().MP = player.GetComponent<PlayerAttribute>().initMP;
+        player.GetComponent<PlayerAttribute>().MAXMP = player.GetComponent<PlayerAttribute>().initMP;
         player.GetComponent<PlayerAttribute>().endurance = player.GetComponent<PlayerAttribute>().initEndurance;
+        player.GetComponent<PlayerAttribute>().enduranceMAX = player.GetComponent<PlayerAttribute>().initEndurance;
         groundStartTime = Time.time;
         groundTotalTime = 20f;
         globalTime = 0f;
@@ -325,10 +332,12 @@ public class GlobalManager : MonoBehaviour
         player.GetComponent<PlayerMove>().animator.speed = 1f;
         player.GetComponent<PlayerMove>().shootCoolDown = player.GetComponent<PlayerMove>().initShootCoolDown;
         player.GetComponent<PlayerAttribute>().ATK = player.GetComponent<PlayerAttribute>().initATK;
+        player.GetComponent<PlayerAttribute>().MAXMP = player.GetComponent<PlayerAttribute>().initMP;
         player.GetComponent<PlayerAttribute>().Level = 0;
         player.GetComponent<PlayerAttribute>().ToNextLevelEXP = 0;
         player.GetComponent<PlayerAttribute>().MP = player.GetComponent<PlayerAttribute>().initMP;
         player.GetComponent<PlayerAttribute>().endurance = player.GetComponent<PlayerAttribute>().initEndurance;
+        player.GetComponent<PlayerAttribute>().enduranceMAX = player.GetComponent<PlayerAttribute>().initEndurance;
         groundStartTime = Time.time;
         groundTotalTime = 20f;
         globalTime = 0f;
@@ -338,6 +347,7 @@ public class GlobalManager : MonoBehaviour
         circleField.transform.position = Vector2.zero;
         circleField.transform.localScale = circleFieldInitLocalScale;
         enemyHP = 5;
+        ememyCount = 0;
         StopSound(audioSource2);
         PlaySound(audioSource1, "mainPageBGM");
         foreach (Transform child in enemySet.transform)

@@ -11,8 +11,11 @@ public class EnemyMove : MonoBehaviour
     public float potionSpawnChance = 0.1f;
     public float attackInterval = 1f;
     public float disappearDistance = 300f;
+    public float dashTime = 10f;// 如果存活超过10s，则加速，攻击到玩家后消失
 
     private float lastAttackTime = 0f;
+    private float startTime = 0f;
+    private bool isDashing = false;
 
 
     Tween tween;
@@ -21,7 +24,7 @@ public class EnemyMove : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         tween = gameObject.AddComponent<Tween>();
-
+        startTime = Time.time;
     }
 
     void Update()
@@ -41,10 +44,18 @@ public class EnemyMove : MonoBehaviour
         }
 
         var ofv = player.transform.position - transform.position;
-        var dis = ofv.x * ofv.x + ofv.y * ofv.y + ofv.z *  ofv.z;
-        if (dis > disappearDistance * disappearDistance) {
+        var dis = ofv.x * ofv.x + ofv.y * ofv.y + ofv.z * ofv.z;
+        if (dis > disappearDistance * disappearDistance)
+        {
             // globalManager.on_enemy_dead(this);
             Destroy(gameObject);
+        }
+
+        if(Time.time - startTime > dashTime && !isDashing)
+        {
+            isDashing = true;
+            speed = speed * 1.5f;
+            GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0, 50, 100);
         }
     }
 
@@ -57,13 +68,17 @@ public class EnemyMove : MonoBehaviour
             Vector3 moveAmount = direction * speed * Time.deltaTime;
             transform.position += moveAmount;
 
-            if ((player.transform.position - transform.position).x > 0)
+            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+            if (distanceToPlayer > 1f)
             {
-                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            }
-            else
-            {
-                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                if (direction.x > 0)
+                {
+                    transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                }
+                else
+                {
+                    transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                }
             }
         }
     }
@@ -74,18 +89,23 @@ public class EnemyMove : MonoBehaviour
         {
             player.GetComponent<PlayerAttribute>().ChangeHP(-1);
             lastAttackTime = Time.time;
+            if(isDashing)
+                Destroy(gameObject);
         }
     }
 
     public void ChangeHP(int value)
     {
         HP += value;
-        if (HP <= 0) {
+        if (HP <= 0)
+        {
             HP = 0;
         }
-        else { 
+        else
+        {
             tween.Clear();
-            tween.AddTween((float a) => {
+            tween.AddTween((float a) =>
+            {
                 GetComponent<SpriteRenderer>().material.SetFloat("_white_ratio", a);
             }, 1, 0, 0.3f, Tween.TransitionType.QUAD, Tween.EaseType.OUT);
             tween.Play();

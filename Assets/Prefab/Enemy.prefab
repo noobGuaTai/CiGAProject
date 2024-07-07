@@ -136,6 +136,7 @@ MonoBehaviour:
   potionSpawnChance: 1
   attackInterval: 1
   disappearDistance: 300
+  dashTime: 10
 --- !u!95 &-6006686202208108652
 Animator:
   serializedVersion: 5
