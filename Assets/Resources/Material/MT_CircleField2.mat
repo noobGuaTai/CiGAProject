@@ -67,10 +67,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _outter: 600
+    - _outter: 560
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _center_pos: {r: 225.69254, g: 106.0407, b: 0, a: 0}
+    - _center_pos: {r: 114.60135, g: 107.39851, b: 0, a: 0}
   m_BuildTextureStacks: []
