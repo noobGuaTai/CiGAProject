@@ -211,6 +211,7 @@ MonoBehaviour:
   mainCamera: {fileID: 519420028}
   circleField: {fileID: 1899096425}
   circleFieldInitLocalScale: {x: 0, y: 0, z: 0}
+  circleFieldVisual: {fileID: 787404108}
   enemyHP: 5
   enemySpeed: 5
   ememyCount: 0
@@ -2797,7 +2798,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 600, y: 600, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1048188677}
@@ -2836,7 +2837,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 100
+  m_Radius: 200
 --- !u!114 &1899096429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3097,10 +3098,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -72.7
       objectReference: {fileID: 0}
-    - target: {fileID: 1392505573992986808, guid: 47933cd3840796148be3d6229725af8d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 8.200001
-      objectReference: {fileID: 0}
     - target: {fileID: 1947112946000922200, guid: 47933cd3840796148be3d6229725af8d, type: 3}
       propertyPath: m_text
       value: "\u786E\u5B9A"
@@ -3157,6 +3154,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2846026406445486735, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 2846026406445486735, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 3620881747040916551, guid: 47933cd3840796148be3d6229725af8d, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -3221,6 +3226,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 70.479004
       objectReference: {fileID: 0}
+    - target: {fileID: 5276577059809587650, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 5276577059809587650, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 5848319336830375958, guid: 47933cd3840796148be3d6229725af8d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -3333,6 +3346,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8538372168042103689, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8538372168042103689, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3606,10 +3627,10 @@ GameObject:
   - component: {fileID: 458207230182310800}
   - component: {fileID: 4283266139842343775}
   - component: {fileID: 208674582150031669}
-  - component: {fileID: 7558391130555883696}
   - component: {fileID: 6826466280349970269}
   - component: {fileID: 4437016432947584282}
   - component: {fileID: 7558391130555883697}
+  - component: {fileID: 7558391130555883698}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -3622,8 +3643,29 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 828024597962595119, guid: 47933cd3840796148be3d6229725af8d, type: 3}
   m_PrefabInstance: {fileID: 2361560257067215416}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &7558391130555883696
-BoxCollider2D:
+--- !u!95 &7558391130555883697
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476710637330405125}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c29ab64c5e5a83343bea6cbc3fc9f057, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &7558391130555883698
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3654,40 +3696,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03668976, y: 0.40127516}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12, y: 24}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 13.695122, y: 25.686287}
-  m_EdgeRadius: 0
---- !u!95 &7558391130555883697
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7476710637330405125}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c29ab64c5e5a83343bea6cbc3fc9f057, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 12, y: 24}
+  m_Direction: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
