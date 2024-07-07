@@ -84,7 +84,7 @@ public class ui_timeline_flag : MonoBehaviour
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            float ratio = elapsedTime / duration;
+            float ratio = (20 - globalManager.GetComponent<GlobalManager>().groundTime) / duration;
 
             Vector3 position = rectTransform.anchoredPosition;
             position.x = Mathf.Lerp(start_x, end_x, ratio);

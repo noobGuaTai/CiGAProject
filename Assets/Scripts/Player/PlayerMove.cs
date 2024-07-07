@@ -166,7 +166,7 @@ public class PlayerMove : MonoBehaviour
             OnPlayerChangeState.Invoke(this);
             for (int i = 0; i < 3; i++)
             {
-                Vector3 randomPosition = GetRandomPointInCircle(transform.position, 100f);
+                Vector3 randomPosition = GetRandomPointInCircle(transform.position, 50f);
                 Instantiate(potion, randomPosition, Quaternion.identity);
             }
         }
@@ -175,7 +175,7 @@ public class PlayerMove : MonoBehaviour
     Vector3 GetRandomPointInCircle(Vector3 center, float radius)
     {
         float angle = Random.Range(0f, Mathf.PI * 2);
-        float distance = Random.Range(70f, radius);
+        float distance = Random.Range(40f, radius);
         Vector3 randomPosition = new Vector3(
             center.x + Mathf.Cos(angle) * distance,
             center.y,
