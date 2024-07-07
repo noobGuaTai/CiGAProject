@@ -9,11 +9,11 @@ public class MainPageManager : MonoBehaviour
     public GameObject sliderBGM;
     public Dictionary<string, AudioClip> soundClip;
     public GameObject globalManager;
-
+    public GameObject helpPanel;
 
     void Start()
     {
-
+        helpPanel = transform.Find("HelpPanel").gameObject;
     }
 
     void Update()
@@ -21,8 +21,10 @@ public class MainPageManager : MonoBehaviour
 
     }
 
-
-
+    public void return_from_help() {
+        helpPanel.SetActive(false);
+    }
+   
     public void StartGame()
     {
         gameObject.SetActive(false);

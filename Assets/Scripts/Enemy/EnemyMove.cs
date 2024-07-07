@@ -13,10 +13,15 @@ public class EnemyMove : MonoBehaviour
     public float disappearDistance = 300f;
 
     private float lastAttackTime = 0f;
-    
+
+
+    Tween tween;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        tween = gameObject.AddComponent<Tween>();
+
     }
 
     void Update()
@@ -75,9 +80,15 @@ public class EnemyMove : MonoBehaviour
     public void ChangeHP(int value)
     {
         HP += value;
-        if (HP <= 0)
-        {
+        if (HP <= 0) {
             HP = 0;
+        }
+        else { 
+            tween.Clear();
+            tween.AddTween((float a) => {
+                GetComponent<SpriteRenderer>().material.SetFloat("_white_ratio", a);
+            }, 1, 0, 0.3f, Tween.TransitionType.QUAD, Tween.EaseType.OUT);
+            tween.Play();
         }
     }
 }
