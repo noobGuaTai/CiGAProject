@@ -64,6 +64,14 @@ public class ui_timeline_flag : MonoBehaviour
             Vector3 position = rectTransform.anchoredPosition;
             position.x = Mathf.Lerp(start_x, end_x, ratio);
             rectTransform.anchoredPosition = position;
+            if((position.x - start_x) / (end_x - start_x) >= 0.75f)
+            {
+                transform.localScale = new Vector3(2f, 2f, 1f);
+            }
+            else
+            {
+                transform.localScale = new Vector3(1f, 1f, 1f);
+            }
 
             yield return null;
         }
