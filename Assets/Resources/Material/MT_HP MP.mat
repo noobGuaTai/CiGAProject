@@ -31,7 +31,7 @@ Material:
     m_Floats:
     - _hp_max: -70
     - _hp_min: -152
-    - _hp_ratio: 0.7
+    - _hp_ratio: 0
     - _white_ratio: 0
     m_Colors:
     - _hp_base_color: {r: 0, g: 0, b: 0, a: 0}
