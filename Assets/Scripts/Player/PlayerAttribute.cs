@@ -35,7 +35,8 @@ public class PlayerAttribute : MonoBehaviour
     public OnGainExpType on_gain_exp;
 
     Tween tween;
-    private void Start() {
+    private void Start()
+    {
         ToNextLevelEXP = get_next_level_exp(Level);
         levelUpAnimator = transform.Find("LevelUp").GetComponent<Animator>();
         tween = gameObject.AddComponent<Tween>();
@@ -54,12 +55,24 @@ public class PlayerAttribute : MonoBehaviour
             EXP -= ToNextLevelEXP;
             Level += 1;
             ToNextLevelEXP = get_next_level_exp(Level);
-            MAXMP += (int)math.pow(Level, 1.2f) + (int)(0.7f * Level);
-            enduranceMAX += 100 *((int)math.pow(Level, 1.2f) + (int)(0.5f * Level));
-            if (GetComponent<PlayerMove>().shootCoolDown > 0.2f)
-                GetComponent<PlayerMove>().shootCoolDown -= 0.1f;
+            if (Level <= 7)
+            {
+                MAXMP += (int)math.pow(Level, 1.2f) + (int)(0.2f * Level);
+                enduranceMAX += 100 * ((int)math.pow(Level, 1.2f) + (int)(0.35f * Level));
+            }
+
+            if (GetComponent<PlayerMove>().shootCoolDown > 0.25f)
+            {
+                if (Level == 1 || Level == 2)
+                    GetComponent<PlayerMove>().shootCoolDown -= 0.15f;
+                else
+                    GetComponent<PlayerMove>().shootCoolDown -= 0.05f;
+            }
+
             else if (Level % 3 == 0)
                 ATK += 1;
+            MP = MAXMP;
+            endurance = enduranceMAX;
             GetComponent<PlayerMove>().moveSpeed += 3;
             levelUpAnimator.Play("LevelUp");
             globalManager.GetComponent<GlobalManager>().PlaySound(globalManager.GetComponent<GlobalManager>().audioSource5, "LevelUp");
@@ -95,7 +108,8 @@ public class PlayerAttribute : MonoBehaviour
                 HP = MAXHP;
             }
             tween.Clear();
-            tween.AddTween((float a) => {
+            tween.AddTween((float a) =>
+            {
                 GetComponent<SpriteRenderer>().material.SetFloat("_red_ratio", a);
             }, 1, 0, 0.3f, Tween.TransitionType.QUAD, Tween.EaseType.OUT);
             tween.Play();

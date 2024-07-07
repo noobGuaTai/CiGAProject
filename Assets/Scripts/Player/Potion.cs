@@ -11,7 +11,7 @@ public class Potion : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         globalManager = GameObject.FindGameObjectWithTag("GlobalManager");
-        Destroy(gameObject, 8f);
+        Destroy(gameObject, 20f);
     }
 
     void OnTriggerEnter2D(Collider2D other)

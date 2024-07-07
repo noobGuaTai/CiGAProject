@@ -49,6 +49,7 @@ public class GlobalManager : MonoBehaviour
     public float tileMapMoveSpeed = 40f;
     public GameObject mainPage;
     public GameObject totalTimeUI;
+    public GameObject statusBar;
 
     public AudioSource audioSource1;// BGM
     public AudioSource audioSource2;// 倒计时音效
@@ -252,9 +253,9 @@ public class GlobalManager : MonoBehaviour
         timeFlag.GetComponent<ui_timeline_flag>().ResetMove();
         if (timeSlice % 2 == 0 && circleField.GetComponent<CircleCollider2D>().radius > 100f)// 每2次时间片就增加一次难度
         {
-            StartCoroutine(SmoothScaleCircleField(-10, 5f));
+            StartCoroutine(SmoothScaleCircleField(-20, 5f));
             enemySpawnInterval = enemySpawnInterval > 0.1f ? enemySpawnInterval - 0.1f : enemySpawnInterval;
-            // player.GetComponent<PlayerMove>().moveSpeed += 2;
+            player.GetComponent<PlayerMove>().moveSpeed += 2;
         }
         on_enter_next_timeslice.Invoke();
     }
@@ -304,6 +305,9 @@ public class GlobalManager : MonoBehaviour
         circleField.transform.position = Vector2.zero;
         circleField.transform.localScale = circleFieldInitLocalScale;
         circleField.GetComponent<CircleField>().StartMove();
+        statusBar.GetComponent<ui_statusbar>().is_move = true;
+        statusBar.GetComponent<ui_statusbar>().mp.material.SetColor("_hp_base_color", statusBar.GetComponent<ui_statusbar>().magic_color);
+        statusBar.GetComponent<ui_statusbar>().mp.material.SetColor("_hp_light_color", statusBar.GetComponent<ui_statusbar>().magic_light_color);
         enemyHP = 5;
         StopSound(audioSource2);
         PlaySound(audioSource1, "battleBGM");
@@ -362,6 +366,9 @@ public class GlobalManager : MonoBehaviour
         ememyCount = 0;
         StopSound(audioSource2);
         PlaySound(audioSource1, "mainPageBGM");
+        statusBar.GetComponent<ui_statusbar>().is_move = true;
+        statusBar.GetComponent<ui_statusbar>().mp.material.SetColor("_hp_base_color", statusBar.GetComponent<ui_statusbar>().magic_color);
+        statusBar.GetComponent<ui_statusbar>().mp.material.SetColor("_hp_light_color", statusBar.GetComponent<ui_statusbar>().magic_light_color);
         timeFlag.GetComponent<Image>().material.SetFloat("_white_ratio", 0);
         foreach (Transform child in enemySet.transform)
         {

@@ -148,7 +148,7 @@ public class PlayerMove : MonoBehaviour
             smokeAnimator.Play("smoke");
             if (playerState == PlayerState.infiniteMove)
             {
-                playerAttribute.ATK += 1;
+                shootCoolDown = shootCoolDown * 0.7f;
                 moveSpeed = moveSpeed / 1.5f;
                 playerState = PlayerState.infiniteAttack;
                 changeStateAnimator.Play("MoveChange");
@@ -156,7 +156,7 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                playerAttribute.ATK -= 1;
+                shootCoolDown = shootCoolDown / 0.7f;
                 moveSpeed = moveSpeed * 1.5f;
                 playerState = PlayerState.infiniteMove;
                 changeStateAnimator.Play("AttackChange");

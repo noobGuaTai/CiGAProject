@@ -9,8 +9,8 @@ public class ui_statusbar : MonoBehaviour
     public Color magic_light_color;
     public Color move_color;
     public Color move_light_color;
-    Image hp;
-    Image mp;
+    public Image hp;
+    public Image mp;
     RectTransform hp_box;
     RectTransform mp_box;
 

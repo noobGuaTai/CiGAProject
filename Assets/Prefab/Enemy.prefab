@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7526339520961000238, guid: f752c0dc08f67c9438b158bff9066297, type: 3}
-  speed: 40
+  speed: 45
   HP: 20
   potionPrefab: {fileID: 7151004024959247479, guid: 3439f096444b59e40a15b646267fdf5f, type: 3}
   globalManager: {fileID: 0}

@@ -234,6 +234,7 @@ MonoBehaviour:
   tileMapMoveSpeed: 40
   mainPage: {fileID: 254197542098957687}
   totalTimeUI: {fileID: 26414557}
+  statusBar: {fileID: 486173958}
   audioSource1: {fileID: 121079228}
   audioSource2: {fileID: 121079229}
   audioSource3: {fileID: 121079230}
@@ -951,6 +952,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1048188677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &486173958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3803548953197467942, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+  m_PrefabInstance: {fileID: 526123573}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,6 +1264,54 @@ PrefabInstance:
       propertyPath: globalManager
       value: 
       objectReference: {fileID: 121079225}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: move_color.b
+      value: 0.09743238
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: move_color.g
+      value: 0.30368274
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: move_color.r
+      value: 0.7122642
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: magic_color.b
+      value: 0.6084906
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: magic_color.g
+      value: 0.13370416
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: magic_color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: move_light_color.b
+      value: 0.08176841
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: move_light_color.g
+      value: 0.61184585
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: move_light_color.r
+      value: 0.6933962
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: magic_light_color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: magic_light_color.g
+      value: 0.20794535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925960450156435051, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: magic_light_color.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
