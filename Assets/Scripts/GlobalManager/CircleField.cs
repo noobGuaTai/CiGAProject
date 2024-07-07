@@ -8,8 +8,8 @@ public class CircleField : MonoBehaviour
 {
     public GameObject player;
     public GameObject globalManager;
-    public float topDownBorder = 200f;
-    public float leftRightBorder = 300f;
+    public float topDownBorder = 300f;
+    public float leftRightBorder = 400f;
     public float moveDistance = 50f;
     public float moveDuration = 20f; // 持续时间
     public int ATK = 1;
@@ -39,14 +39,33 @@ public class CircleField : MonoBehaviour
 
     void SelectRandomTargetPoint()
     {
-        Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        Vector3 potentialTarget = transform.position + (Vector3)(randomDirection * moveDistance);
+        bool foundValidPoint = false;
+        for (int i = 0; i < 10; i++)
+        {
+            Vector2 randomDirection = Random.insideUnitCircle.normalized;
+            Vector3 potentialTarget = transform.position + (Vector3)(randomDirection * moveDistance);
 
+            potentialTarget.x = Mathf.Clamp(potentialTarget.x, -leftRightBorder, leftRightBorder);
+            potentialTarget.y = Mathf.Clamp(potentialTarget.y, -topDownBorder, topDownBorder);
 
-        potentialTarget.x = Mathf.Clamp(potentialTarget.x, -leftRightBorder, leftRightBorder);
-        potentialTarget.y = Mathf.Clamp(potentialTarget.y, -topDownBorder, topDownBorder);
+            if (Vector3.Distance(transform.position, potentialTarget) >= moveDistance)
+            {
+                targetPoint = potentialTarget;
+                foundValidPoint = true;
+                break;
+            }
+        }
 
-        targetPoint = potentialTarget;
+        if (!foundValidPoint)
+        {
+            Vector2 randomDirection = Random.insideUnitCircle.normalized;
+            Vector3 potentialTarget = transform.position + (Vector3)(randomDirection * moveDistance);
+
+            potentialTarget.x = Mathf.Clamp(potentialTarget.x, -leftRightBorder, leftRightBorder);
+            potentialTarget.y = Mathf.Clamp(potentialTarget.y, -topDownBorder, topDownBorder);
+
+            targetPoint = potentialTarget;
+        }
     }
 
     void StartMoving()
@@ -62,7 +81,7 @@ public class CircleField : MonoBehaviour
     {
         Vector3 start = transform.position;
         float elapsedTime = 0f;
-        
+
         while (elapsedTime < duration && globalManager.GetComponent<GlobalManager>().isStart)
         {
             elapsedTime += Time.deltaTime;
@@ -70,7 +89,7 @@ public class CircleField : MonoBehaviour
             transform.position = Vector3.Lerp(start, destination, ratio);
             yield return null;
         }
-        if(globalManager.GetComponent<GlobalManager>().isStart)
+        if (globalManager.GetComponent<GlobalManager>().isStart)
             transform.position = destination;
     }
 

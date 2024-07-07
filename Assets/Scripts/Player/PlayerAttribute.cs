@@ -57,8 +57,10 @@ public class PlayerAttribute : MonoBehaviour
             ToNextLevelEXP = get_next_level_exp(Level);
             if (Level <= 7)
             {
-                MAXMP += (int)math.pow(Level, 1.2f) + (int)(0.2f * Level);
-                enduranceMAX += 100 * ((int)math.pow(Level, 1.2f) + (int)(0.35f * Level));
+                // MAXMP += (int)math.pow(Level, 1.05f) + (int)(0.1f * Level);
+                MAXMP += Level/2;
+                // enduranceMAX += 100 * ((int)math.pow(Level, 1.05f) + (int)(0.3f * Level));
+                enduranceMAX += 45 * Level + 80;
             }
 
             if (GetComponent<PlayerMove>().shootCoolDown > 0.25f)
@@ -68,7 +70,6 @@ public class PlayerAttribute : MonoBehaviour
                 else
                     GetComponent<PlayerMove>().shootCoolDown -= 0.05f;
             }
-
             else if (Level % 3 == 0)
                 ATK += 1;
             MP = MAXMP;

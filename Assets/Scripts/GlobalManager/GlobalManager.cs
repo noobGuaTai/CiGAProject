@@ -24,6 +24,7 @@ public class GlobalManager : MonoBehaviour
     public GameObject sliderBGM;
     public GameObject mainCamera;
     public GameObject circleField;
+    public float circleFieldInitRadius = 300f;
     public Vector3 circleFieldInitLocalScale;
     public GameObject circleFieldVisual;
     public int enemyHP = 5;
@@ -161,7 +162,7 @@ public class GlobalManager : MonoBehaviour
 
     int get_max_enemy()
     {
-        return (int)Unity.Mathematics.math.pow(timeSlice, 1.5) + 2;
+        return (int)Unity.Mathematics.math.pow(timeSlice, 1.5) + timeSlice + 2;
     }
 
 
@@ -251,9 +252,12 @@ public class GlobalManager : MonoBehaviour
         ememyCount = 0;
         StopSound(audioSource2);
         timeFlag.GetComponent<ui_timeline_flag>().ResetMove();
-        if (timeSlice % 2 == 0 && circleField.GetComponent<CircleCollider2D>().radius > 100f)// 每2次时间片就增加一次难度
+        if (circleField.GetComponent<CircleCollider2D>().radius > 150f)
         {
             StartCoroutine(SmoothScaleCircleField(-20, 5f));
+        }
+        // if(timeSlice % 2 == 0)// 每2次时间片就增加一次难度
+        {
             enemySpawnInterval = enemySpawnInterval > 0.1f ? enemySpawnInterval - 0.1f : enemySpawnInterval;
             player.GetComponent<PlayerMove>().moveSpeed += 2;
         }
@@ -303,7 +307,7 @@ public class GlobalManager : MonoBehaviour
         groundTime = groundTotalTime;
         timeSlice = 0;
         circleField.transform.position = Vector2.zero;
-        circleField.transform.localScale = circleFieldInitLocalScale;
+        circleField.GetComponent<CircleCollider2D>().radius = circleFieldInitRadius;
         circleField.GetComponent<CircleField>().StartMove();
         statusBar.GetComponent<ui_statusbar>().is_move = true;
         statusBar.GetComponent<ui_statusbar>().mp.material.SetColor("_hp_base_color", statusBar.GetComponent<ui_statusbar>().magic_color);
@@ -361,7 +365,7 @@ public class GlobalManager : MonoBehaviour
         groundTime = groundTotalTime;
         timeSlice = 0;
         circleField.transform.position = Vector2.zero;
-        circleField.transform.localScale = circleFieldInitLocalScale;
+        circleField.GetComponent<CircleCollider2D>().radius = circleFieldInitRadius;
         enemyHP = 5;
         ememyCount = 0;
         StopSound(audioSource2);
