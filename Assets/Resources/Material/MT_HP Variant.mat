@@ -28,7 +28,7 @@ Material:
     - _hp_max: -63.42739
     - _hp_min: -133.4274
     - _hp_ratio: 1
-    - _white_ratio: 0.95619
+    - _white_ratio: 0
     m_Colors:
     - _hp_base_color: {r: 0.4415095, g: 0.19243148, b: 0.19243148, a: 0}
   m_BuildTextureStacks: []
