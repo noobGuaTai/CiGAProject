@@ -25,6 +25,7 @@ public class GlobalManager : MonoBehaviour
     public GameObject mainCamera;
     public GameObject circleField;
     public Vector3 circleFieldInitLocalScale;
+    public GameObject circleFieldVisual;
     public int enemyHP = 5;
     public float enemySpeed = 5;
     public int ememyCount = 0;
@@ -75,6 +76,7 @@ public class GlobalManager : MonoBehaviour
             new Vector3(0, 1, 0)
         };
         // SpawnBackgroundObjects();
+        circleFieldVisual.SetActive(false);
         StartCoroutine(LoadSound("Effect"));
         StartCoroutine(LoadSound("BackgroundMusic"));
     }
@@ -90,6 +92,7 @@ public class GlobalManager : MonoBehaviour
         StartCoroutine(SpawnEnemyCoroutine());
         timeFlag.GetComponent<ui_timeline_flag>().StartMove();
         tileMap.transform.position = tileMapInitialPosition;
+        circleFieldVisual.SetActive(true);
     }
 
     void Update()
@@ -234,28 +237,30 @@ public class GlobalManager : MonoBehaviour
         ememyCount = 0;
         StopSound(audioSource2);
         timeFlag.GetComponent<ui_timeline_flag>().ResetMove();
-        if (timeSlice % 2 == 0 && circleField.transform.localScale.x > 100f)// 每2次时间片就增加一次难度
+        if (timeSlice % 2 == 0 && circleField.GetComponent<CircleCollider2D>().radius > 100f)// 每2次时间片就增加一次难度
         {
-            StartCoroutine(SmoothScaleCircleField(new Vector3(-25, -25, 0), 5f));
+            StartCoroutine(SmoothScaleCircleField(-20, 5f));
             // enemySpawnInterval = enemySpawnInterval > 0.1f ? enemySpawnInterval - 0.1f : enemySpawnInterval;
             // player.GetComponent<PlayerMove>().moveSpeed += 2;
         }
     }
 
-    IEnumerator SmoothScaleCircleField(Vector3 scaleChange, float duration)
+    IEnumerator SmoothScaleCircleField(float radiusChange, float duration)
     {
-        Vector3 initialScale = circleField.transform.localScale;
-        Vector3 targetScale = initialScale + scaleChange;
+        CircleCollider2D collider = circleField.GetComponent<CircleCollider2D>();
+        float initialRadius = collider.radius;
+        float targetRadius = initialRadius + radiusChange;
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            circleField.transform.localScale = Vector3.Lerp(initialScale, targetScale, elapsedTime / duration);
+            collider.radius = Mathf.Lerp(initialRadius, targetRadius, elapsedTime / duration);
             yield return null;
         }
 
-        circleField.transform.localScale = targetScale;
+        // 确保最终radius精确
+        collider.radius = targetRadius;
     }
 
     public void ResetGame()
@@ -286,6 +291,7 @@ public class GlobalManager : MonoBehaviour
         StopSound(audioSource2);
         PlaySound(audioSource1, "battleBGM");
         timeFlag.GetComponent<ui_timeline_flag>().ResetMove();
+        circleFieldVisual.SetActive(true);
         foreach (Transform child in enemySet.transform)
         {
             Destroy(child.gameObject);
@@ -306,6 +312,7 @@ public class GlobalManager : MonoBehaviour
         isStart = false;
         timeSliceUI.GetComponent<TextMeshProUGUI>().text = "总生存时长：" + timeSlice;
         timeSliceTotalUI.GetComponent<TextMeshProUGUI>().text = "历史最佳：" + timeSliceRank;
+        circleFieldVisual.SetActive(false);
     }
 
     public void BackHome()

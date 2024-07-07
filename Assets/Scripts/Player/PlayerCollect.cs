@@ -15,7 +15,6 @@ public class PlayerCollect : MonoBehaviour
     IEnumerator MovePotionToPlayer(GameObject potion)
     {
         Vector3 startPosition = potion.transform.position;
-        Vector3 endPosition = transform.position;
         float duration = 0.3f;
         float elapsedTime = 0f;
 
@@ -23,7 +22,7 @@ public class PlayerCollect : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float ratio = elapsedTime / duration;
-            potion.transform.position = Vector3.Lerp(startPosition, endPosition, ratio);
+            potion.transform.position = Vector3.Lerp(startPosition, transform.position, ratio);
             yield return null;
         }
     }
