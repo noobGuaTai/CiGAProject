@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &26414557 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4817812944137879335, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+  m_PrefabInstance: {fileID: 526123573}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &44562298
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,8 +197,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 823338838608669526, guid: d51950619d460b34d829135cf2b532cc, type: 3}
   spawnPointDistance: 200
   enemySet: {fileID: 378268452}
-  enemySpawnInterval: 2
-  enemySpawnIntervalInit: 2
+  enemySpawnInterval: 3
+  enemySpawnIntervalInit: 3
   groundTime: 20
   groundStartTime: 0
   groundTotalTime: 20
@@ -208,7 +213,7 @@ MonoBehaviour:
   circleFieldInitLocalScale: {x: 0, y: 0, z: 0}
   enemyHP: 5
   enemySpeed: 5
-  ememyLive: 0
+  ememyCount: 0
   topDownBorder: 300
   leftRightBorder: 400
   backgroundObject1: {fileID: 1156219897507031234, guid: d55e8ae0f8b59ec44bee40a7828db9af, type: 3}
@@ -227,6 +232,7 @@ MonoBehaviour:
   tileMap: {fileID: 622829373}
   tileMapMoveSpeed: 40
   mainPage: {fileID: 1061197845}
+  totalTimeUI: {fileID: 26414557}
   audioSource1: {fileID: 121079228}
   audioSource2: {fileID: 121079229}
   audioSource3: {fileID: 121079230}
@@ -1383,13 +1389,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3305004253340376259, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.29992676
-      objectReference: {fileID: 0}
-    - target: {fileID: 3305004253340376259, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.6000061
+    - target: {fileID: 3547903776742292180, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8fef9ae1dd36ab545affe8d85ba93823, type: 2}
+    - target: {fileID: 3547903776742292180, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7586744949413561496, guid: 8fef9ae1dd36ab545affe8d85ba93823, type: 2}
+    - target: {fileID: 3547903776742292180, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6106203934544759112, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
       propertyPath: m_Name
@@ -1399,14 +1409,6 @@ PrefabInstance:
       propertyPath: globalManager
       value: 
       objectReference: {fileID: 121079225}
-    - target: {fileID: 8528204149982706289, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.3999939
-      objectReference: {fileID: 0}
-    - target: {fileID: 8528204149982706289, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.19999695
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2918,9 +2920,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.3154011}
+  m_Offset: {x: 0, y: -0.19181824}
   serializedVersion: 2
-  m_Radius: 30.881563
+  m_Radius: 52.628563
 --- !u!114 &1316813028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3405,7 +3407,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 500, y: 500, z: 1}
+  m_LocalScale: {x: 600, y: 600, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1048188677}
@@ -3949,6 +3951,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 682621384591369504, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 35.789
+      objectReference: {fileID: 0}
+    - target: {fileID: 682621384591369504, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 13.9445
+      objectReference: {fileID: 0}
+    - target: {fileID: 682621384591369504, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 682621384591369504, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -72.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947112946000922200, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_text
+      value: "\u786E\u5B9A"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947112946000922200, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_fontSize
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947112946000922200, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2143087449298157406, guid: 47933cd3840796148be3d6229725af8d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3961,6 +3991,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3620881747040916551, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620881747040916551, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620881747040916551, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3627247459756424777, guid: 47933cd3840796148be3d6229725af8d, type: 3}
       propertyPath: m_Name
       value: MainPage
@@ -3969,13 +4011,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4210859965357916635, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299475481153114731, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 14.558
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299475481153114731, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 70.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4970234151789192362, guid: 47933cd3840796148be3d6229725af8d, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4970234151789192362, guid: 47933cd3840796148be3d6229725af8d, type: 3}
       propertyPath: m_SortingLayerID
       value: -465097931
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209396898895767619, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -60.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209396898895767619, guid: 47933cd3840796148be3d6229725af8d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 70.479004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4050,12 +4112,15 @@ MonoBehaviour:
   MAXHP: 10
   MP: 10
   MAXMP: 10
-  ATK: 1
+  initMP: 10
+  ATK: 4
+  initATK: 4
   EXP: 0
   Level: 0
   ToNextLevelEXP: 0
-  endurance: 1000
-  enduranceMAX: 1000
+  endurance: 1200
+  enduranceMAX: 1200
+  initEndurance: 1200
   isInCircleField: 1
   circleField: {fileID: 1899096425}
   circleFieldAttackInterval: 1
@@ -4075,12 +4140,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c711fe6286a1d548910731e8928a1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 70
+  moveSpeed: 100
   initMoveSpeed: 100
   playerState: 0
   bulletPrefab: {fileID: 6670689417355361660, guid: 9c1fd75683569f14e882b0555c8bb44c, type: 3}
   bulletSpeed: 100
-  shootCoolDown: 0.3
+  shootCoolDown: 1
+  initShootCoolDown: 1
   canChangeState: 0
   globalManager: {fileID: 121079225}
   bulletSet: {fileID: 1722884838}

@@ -30,7 +30,7 @@ public class EnemyMove : MonoBehaviour
                 GameObject potion = Instantiate(potionPrefab, transform.position, Quaternion.identity);
                 potion.GetComponent<Potion>().Drop(transform.position);
             }
-            globalManager.on_enemy_dead(this);
+            // globalManager.on_enemy_dead(this);
             Destroy(gameObject);
             return;
         }
@@ -38,7 +38,7 @@ public class EnemyMove : MonoBehaviour
         var ofv = player.transform.position - transform.position;
         var dis = ofv.x * ofv.x + ofv.y * ofv.y + ofv.z *  ofv.z;
         if (dis > disappearDistance * disappearDistance) {
-            globalManager.on_enemy_dead(this);
+            // globalManager.on_enemy_dead(this);
             Destroy(gameObject);
         }
     }

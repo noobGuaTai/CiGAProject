@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -465097931
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 6354567411773976239, guid: 09650d566c7ffd54abf82f904d0a3baf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -175,10 +175,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7526339520961000238, guid: f752c0dc08f67c9438b158bff9066297, type: 3}
   speed: 40
-  HP: 5
+  HP: 20
   potionPrefab: {fileID: 7151004024959247479, guid: 3439f096444b59e40a15b646267fdf5f, type: 3}
+  globalManager: {fileID: 0}
   potionSpawnChance: 1
   attackInterval: 1
+  disappearDistance: 300
 --- !u!95 &-6006686202208108652
 Animator:
   serializedVersion: 5

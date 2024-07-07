@@ -10,12 +10,13 @@ public enum PlayerState
 
 public class PlayerMove : MonoBehaviour
 {
-    public float moveSpeed = 100f;
-    public float initMoveSpeed = 100f;
+    public float moveSpeed = 75f;
+    public float initMoveSpeed = 75f;
     public PlayerState playerState;
     public GameObject bulletPrefab;
     public float bulletSpeed = 20f;
-    public float shootCoolDown = 0.2f;
+    public float shootCoolDown = 1f;
+    public float initShootCoolDown = 1f;
     public bool canChangeState = false;
     public GameObject globalManager;
     public GameObject bulletSet;
@@ -55,7 +56,7 @@ public class PlayerMove : MonoBehaviour
             else
             {
                 FiniteMove();
-                playerAttribute.MP = 10;
+                playerAttribute.MP = playerAttribute.MAXMP;
             }
 
             if (Input.GetMouseButton(0) && shootTimer <= 0 && playerAttribute.MP >= 1)
@@ -97,7 +98,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            
+
         }
         Vector2 previousPosition = rb.position;
         Vector2 newPosition = previousPosition + moveInput * moveSpeed * Time.fixedDeltaTime;
@@ -143,12 +144,16 @@ public class PlayerMove : MonoBehaviour
         {
             if (playerState == PlayerState.infiniteMove)
             {
+                playerAttribute.ATK += 1;
+                moveSpeed = moveSpeed / 1.5f;
                 playerState = PlayerState.infiniteAttack;
                 changeStateAnimator.Play("MoveChange");
                 animator.SetBool("attack", true);
             }
             else
             {
+                playerAttribute.ATK -= 1;
+                moveSpeed = moveSpeed * 1.5f;
                 playerState = PlayerState.infiniteMove;
                 changeStateAnimator.Play("AttackChange");
                 animator.SetBool("attack", false);

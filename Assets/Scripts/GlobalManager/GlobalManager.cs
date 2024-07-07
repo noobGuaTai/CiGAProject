@@ -27,7 +27,7 @@ public class GlobalManager : MonoBehaviour
     public Vector3 circleFieldInitLocalScale;
     public int enemyHP = 5;
     public float enemySpeed = 5;
-    public int ememyLive = 0;
+    public int ememyCount = 0;
 
     public float topDownBorder = 300f;//地图边界
     public float leftRightBorder = 400f;
@@ -47,6 +47,7 @@ public class GlobalManager : MonoBehaviour
     public GameObject tileMap;
     public float tileMapMoveSpeed = 40f;
     public GameObject mainPage;
+    public GameObject totalTimeUI;
 
     public AudioSource audioSource1;// BGM
     public AudioSource audioSource2;// 倒计时音效
@@ -101,7 +102,7 @@ public class GlobalManager : MonoBehaviour
                 ReStartNextTimeSlice();
             }
             groundTime = groundTotalTime - (Time.time - groundStartTime);
-            if (groundTime <= 5.2f)
+            if (groundTime <= 5f)
             {
                 player.GetComponent<PlayerMove>().canChangeState = true;
                 if (!isPlayCountDown)
@@ -121,6 +122,7 @@ public class GlobalManager : MonoBehaviour
             {
                 GameOver();
             }
+            totalTimeUI.GetComponent<TextMeshProUGUI>().text = timeSlice.ToString();
         }
         else
         {
@@ -132,7 +134,7 @@ public class GlobalManager : MonoBehaviour
     {
         while (isStart)
         {
-            if (isStart && ememyLive < get_max_enemy())
+            if (isStart && ememyCount < get_max_enemy())
                 SpawnEnemy();
             yield return new WaitForSeconds(enemySpawnInterval);
 
@@ -158,13 +160,13 @@ public class GlobalManager : MonoBehaviour
         var em = enemy.GetComponent<EnemyMove>();
         // em.HP = enemyHP;
         em.globalManager = this;
-        ememyLive++;
+        ememyCount++;
     }
 
-    public void on_enemy_dead(EnemyMove who)
-    {
-        ememyLive--;
-    }
+    // public void on_enemy_dead(EnemyMove who)
+    // {
+    //     ememyCount--;
+    // }
 
     IEnumerator LoadSound(string path)
     {
@@ -229,11 +231,12 @@ public class GlobalManager : MonoBehaviour
         groundStartTime = Time.time;
         timeSlice += 1;
         isPlayCountDown = false;
+        ememyCount = 0;
         StopSound(audioSource2);
         timeFlag.GetComponent<ui_timeline_flag>().ResetMove();
-        // if (timeSlice % 2 == 0)// 每2次时间片就增加一次难度
+        if (timeSlice % 2 == 0 && circleField.transform.localScale.x > 100f)// 每2次时间片就增加一次难度
         {
-            StartCoroutine(SmoothScaleCircleField(new Vector3(-50, -50, 0), 5f));
+            StartCoroutine(SmoothScaleCircleField(new Vector3(-25, -25, 0), 5f));
             // enemySpawnInterval = enemySpawnInterval > 0.1f ? enemySpawnInterval - 0.1f : enemySpawnInterval;
             // player.GetComponent<PlayerMove>().moveSpeed += 2;
         }
@@ -241,19 +244,18 @@ public class GlobalManager : MonoBehaviour
 
     IEnumerator SmoothScaleCircleField(Vector3 scaleChange, float duration)
     {
-        Vector3 initialScale = transform.localScale;
+        Vector3 initialScale = circleField.transform.localScale;
         Vector3 targetScale = initialScale + scaleChange;
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            transform.localScale = Vector3.Lerp(initialScale, targetScale, elapsedTime / duration);
+            circleField.transform.localScale = Vector3.Lerp(initialScale, targetScale, elapsedTime / duration);
             yield return null;
         }
 
-        // 确保最终缩放精确
-        transform.localScale = targetScale;
+        circleField.transform.localScale = targetScale;
     }
 
     public void ResetGame()
@@ -265,8 +267,12 @@ public class GlobalManager : MonoBehaviour
         player.GetComponent<PlayerAttribute>().HP = player.GetComponent<PlayerAttribute>().MAXHP;
         player.GetComponent<PlayerMove>().canChangeState = false;
         player.GetComponent<PlayerMove>().animator.speed = 1f;
+        player.GetComponent<PlayerMove>().shootCoolDown = player.GetComponent<PlayerMove>().initShootCoolDown;
         player.GetComponent<PlayerAttribute>().Level = 0;
         player.GetComponent<PlayerAttribute>().ToNextLevelEXP = 0;
+        player.GetComponent<PlayerAttribute>().ATK = player.GetComponent<PlayerAttribute>().initATK;
+        player.GetComponent<PlayerAttribute>().MP = player.GetComponent<PlayerAttribute>().initMP;
+        player.GetComponent<PlayerAttribute>().endurance = player.GetComponent<PlayerAttribute>().initEndurance;
         groundStartTime = Time.time;
         groundTotalTime = 20f;
         globalTime = 0f;
@@ -280,7 +286,6 @@ public class GlobalManager : MonoBehaviour
         StopSound(audioSource2);
         PlaySound(audioSource1, "battleBGM");
         timeFlag.GetComponent<ui_timeline_flag>().ResetMove();
-        StartCoroutine(SpawnEnemyCoroutine());
         foreach (Transform child in enemySet.transform)
         {
             Destroy(child.gameObject);
@@ -289,6 +294,8 @@ public class GlobalManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        ememyCount = 0;
+        StartCoroutine(SpawnEnemyCoroutine());
     }
 
     public void GameOver()
@@ -309,8 +316,12 @@ public class GlobalManager : MonoBehaviour
         player.GetComponent<PlayerAttribute>().HP = player.GetComponent<PlayerAttribute>().MAXHP;
         player.GetComponent<PlayerMove>().canChangeState = false;
         player.GetComponent<PlayerMove>().animator.speed = 1f;
+        player.GetComponent<PlayerMove>().shootCoolDown = player.GetComponent<PlayerMove>().initShootCoolDown;
+        player.GetComponent<PlayerAttribute>().ATK = player.GetComponent<PlayerAttribute>().initATK;
         player.GetComponent<PlayerAttribute>().Level = 0;
         player.GetComponent<PlayerAttribute>().ToNextLevelEXP = 0;
+        player.GetComponent<PlayerAttribute>().MP = player.GetComponent<PlayerAttribute>().initMP;
+        player.GetComponent<PlayerAttribute>().endurance = player.GetComponent<PlayerAttribute>().initEndurance;
         groundStartTime = Time.time;
         groundTotalTime = 20f;
         globalTime = 0f;

@@ -24,10 +24,26 @@ public class Bullet : MonoBehaviour
         {
             isExploding = true;
             other.GetComponent<EnemyMove>().ChangeHP(-player.GetComponent<PlayerAttribute>().ATK);
+            StartCoroutine(KnockbackEnemy(other.transform));
             rb.velocity = Vector2.zero;
             rb.isKinematic = true;
             collider2d.enabled = false;
             animator.Play("Boom");
+        }
+    }
+
+    IEnumerator KnockbackEnemy(Transform enemyTransform)
+    {
+        Vector3 startPosition = enemyTransform.position;
+        Vector3 knockbackDirection = (enemyTransform.position - transform.position).normalized;
+        Vector3 targetPosition = startPosition + knockbackDirection * 10f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 0.3f && enemyTransform != null)
+        {
+            elapsedTime += Time.deltaTime;
+            enemyTransform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / 0.3f);
+            yield return null;
         }
     }
 
