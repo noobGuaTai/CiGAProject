@@ -24,7 +24,7 @@ public class MainPageManager : MonoBehaviour
     public void return_from_help() {
         helpPanel.SetActive(false);
     }
-   
+    
     public void StartGame()
     {
         gameObject.SetActive(false);

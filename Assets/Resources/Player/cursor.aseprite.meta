@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a6e93676a88d09459064fa2aef8ece0
+guid: ec0376e6552280742a98e6f6e0f0b8f4
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,89 +121,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: button-icon
+  - name: cursor
     originalName: 
-    pivot: {x: 0.5, y: -0.071428575}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 24
-      width: 10
-      height: 14
-    spriteID: 16df1fb4cb671884288a6ee582d66369
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 24}
-  - name: button-icon_Frame_1
-    originalName: 
-    pivot: {x: 0.5, y: -0.27272728}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 42
-      y: 24
-      width: 10
-      height: 11
-    spriteID: b2cccabed7bace542a68da01d7e3fd89
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 42, y: 24}
-  - name: button-icon_Frame_2
-    originalName: 
-    pivot: {x: 0.5, y: -0.16666667}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 26
-      y: 4
-      width: 12
-      height: 12
-    spriteID: d21b53bc22e69da40aa26329462beeba
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 26, y: 4}
-  - name: button-icon_Frame_3
-    originalName: 
-    pivot: {x: 0.5, y: -0.3}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 22
-      y: 24
-      width: 12
-      height: 10
-    spriteID: efa41b9ffbb1da041985eca24941ff33
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 22, y: 24}
-  - name: button-icon_Frame_4
-    originalName: 
-    pivot: {x: 0.5, y: -0.16666667}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -211,8 +131,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 14
-      height: 12
-    spriteID: 147781f7ee67faa45959821221472276
+      height: 14
+    spriteID: 84774e0c0a493cb4cb8027674d200906
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -221,87 +141,27 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: button-icon_Frame_5
-    originalName: 
-    pivot: {x: 0.5, y: -0.27272728}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 46
-      y: 4
-      width: 12
-      height: 11
-    spriteID: 1d3c8ac6d47cfee46849894cc854c7e0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 46, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 679988184
-    name: button-icon
+    guid: -467158800
+    name: cursor
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: button-icon_Frame_0
+    - name: cursor
       frameIndex: 0
       cellRect:
-        x: 3
-        y: 1
-        width: 10
-        height: 14
-      spriteId: 16df1fb4cb671884288a6ee582d66369
-    - name: button-icon_Frame_1
-      frameIndex: 1
-      cellRect:
-        x: 3
-        y: 3
-        width: 10
-        height: 11
-      spriteId: b2cccabed7bace542a68da01d7e3fd89
-    - name: button-icon_Frame_2
-      frameIndex: 2
-      cellRect:
-        x: 2
-        y: 2
-        width: 12
-        height: 12
-      spriteId: d21b53bc22e69da40aa26329462beeba
-    - name: button-icon_Frame_3
-      frameIndex: 3
-      cellRect:
-        x: 2
-        y: 3
-        width: 12
-        height: 10
-      spriteId: efa41b9ffbb1da041985eca24941ff33
-    - name: button-icon_Frame_4
-      frameIndex: 4
-      cellRect:
-        x: 1
-        y: 2
+        x: 0
+        y: 0
         width: 14
-        height: 12
-      spriteId: 147781f7ee67faa45959821221472276
-    - name: button-icon_Frame_5
-      frameIndex: 5
-      cellRect:
-        x: 2
-        y: 3
-        width: 12
-        height: 11
-      spriteId: 1d3c8ac6d47cfee46849894cc854c7e0
+        height: 14
+      spriteId: 84774e0c0a493cb4cb8027674d200906
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 16}
+  canvasSize: {x: 14, y: 14}

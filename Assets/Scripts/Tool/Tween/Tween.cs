@@ -28,7 +28,8 @@ public class Tween : MonoBehaviour
     public enum TweenState
     {
         STOP,
-        RUNNING
+        RUNNING,
+        PAUSED,
     }
 
     public enum PlayMode
@@ -78,7 +79,7 @@ public class Tween : MonoBehaviour
         }
     }
 
-    bool clearWhenEnd = true;
+    public bool clearWhenEnd = true;
 
 
     public void Clear() {
@@ -127,6 +128,16 @@ public class Tween : MonoBehaviour
         _tweenState = Tween.TweenState.RUNNING;
         tweenIndex = 0;
         tweenTime = 0;
+    }
+
+    public void Stop() {
+        _tweenState = Tween.TweenState.STOP;
+        tweenIndex = 0;
+        tweenTime = 0;
+    }
+
+    public void Pause() {
+        _tweenState = Tween.TweenState.PAUSED;
     }
 
     //void tweenCall<T>(TweenNode<T> tweenNode, float alpha)

@@ -40,6 +40,8 @@ public class ui_statusbar : MonoBehaviour
         player_move.OnPlayerChangeState += on_switch_mode;
         hp.material.SetFloat("_hp_ratio", 1f);
         mp.material.SetFloat("_hp_ratio", 1f);
+        hp.material.SetFloat("_white_ratio", 0f);
+        mp.material.SetFloat("_white_ratio", 0f);
         mp.material.SetColor("_hp_base_color", magic_color);
         mp.material.SetColor("_hp_light_color", magic_light_color);
 
