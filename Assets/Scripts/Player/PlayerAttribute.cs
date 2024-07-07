@@ -43,7 +43,7 @@ public class PlayerAttribute : MonoBehaviour
 
     int get_next_level_exp(int level)
     {
-        return (int)math.pow(level, 1.5f) + level;
+        return (int)math.pow(level, 1.4f) + level;
     }
 
     public void gain_exp()
@@ -54,8 +54,8 @@ public class PlayerAttribute : MonoBehaviour
             EXP -= ToNextLevelEXP;
             Level += 1;
             ToNextLevelEXP = get_next_level_exp(Level);
-            MAXMP += (int)math.pow(Level, 1.2f) + (int)(0.75 * Level);
-            enduranceMAX += 100 *((int)math.pow(Level, 1.2f) + (int)(0.5 * Level));
+            MAXMP += (int)math.pow(Level, 1.2f) + (int)(0.7f * Level);
+            enduranceMAX += 100 *((int)math.pow(Level, 1.2f) + (int)(0.5f * Level));
             if (GetComponent<PlayerMove>().shootCoolDown > 0.2f)
                 GetComponent<PlayerMove>().shootCoolDown -= 0.1f;
             else if (Level % 3 == 0)

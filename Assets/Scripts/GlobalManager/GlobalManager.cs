@@ -80,7 +80,7 @@ public class GlobalManager : MonoBehaviour
         circleFieldVisual.SetActive(false);
         StartCoroutine(LoadSound("Effect"));
         StartCoroutine(LoadSound("BackgroundMusic"));
-       
+
     }
 
     public void StartGame()
@@ -110,7 +110,7 @@ public class GlobalManager : MonoBehaviour
         audioSource3.volume = sliderBGM.GetComponent<Slider>().value;
         audioSource4.volume = sliderBGM.GetComponent<Slider>().value;
         audioSource5.volume = sliderBGM.GetComponent<Slider>().value;
-        
+
         if (isStart)
         {
             if (groundTime <= 0)
@@ -287,6 +287,7 @@ public class GlobalManager : MonoBehaviour
         player.GetComponent<PlayerMove>().canChangeState = false;
         player.GetComponent<PlayerMove>().animator.speed = 1f;
         player.GetComponent<PlayerMove>().shootCoolDown = player.GetComponent<PlayerMove>().initShootCoolDown;
+        player.GetComponent<PlayerMove>().playerState = PlayerState.infiniteMove;
         player.GetComponent<PlayerAttribute>().Level = 0;
         player.GetComponent<PlayerAttribute>().ToNextLevelEXP = 0;
         player.GetComponent<PlayerAttribute>().ATK = player.GetComponent<PlayerAttribute>().initATK;
@@ -308,6 +309,7 @@ public class GlobalManager : MonoBehaviour
         PlaySound(audioSource1, "battleBGM");
         timeFlag.GetComponent<ui_timeline_flag>().ResetMove();
         circleFieldVisual.SetActive(true);
+        timeFlag.GetComponent<Image>().material.SetFloat("_white_ratio", 0);
         foreach (Transform child in enemySet.transform)
         {
             Destroy(child.gameObject);
@@ -340,6 +342,7 @@ public class GlobalManager : MonoBehaviour
         player.GetComponent<PlayerMove>().canChangeState = false;
         player.GetComponent<PlayerMove>().animator.speed = 1f;
         player.GetComponent<PlayerMove>().shootCoolDown = player.GetComponent<PlayerMove>().initShootCoolDown;
+        player.GetComponent<PlayerMove>().playerState = PlayerState.infiniteMove;
         player.GetComponent<PlayerAttribute>().ATK = player.GetComponent<PlayerAttribute>().initATK;
         player.GetComponent<PlayerAttribute>().MAXMP = player.GetComponent<PlayerAttribute>().initMP;
         player.GetComponent<PlayerAttribute>().Level = 0;
@@ -359,6 +362,7 @@ public class GlobalManager : MonoBehaviour
         ememyCount = 0;
         StopSound(audioSource2);
         PlaySound(audioSource1, "mainPageBGM");
+        timeFlag.GetComponent<Image>().material.SetFloat("_white_ratio", 0);
         foreach (Transform child in enemySet.transform)
         {
             Destroy(child.gameObject);
@@ -371,6 +375,7 @@ public class GlobalManager : MonoBehaviour
 
         mainPage.SetActive(true);
         player.transform.position = new Vector2(60, 0);
+        player.transform.localScale = new Vector3(1, 1, 1);
         mainCamera.GetComponent<CameraFollow>().isZoomIn = false;
         mainCamera.transform.position = new Vector3(0, 0, -10);
     }
