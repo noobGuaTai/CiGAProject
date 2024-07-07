@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 23cbc20d642f1634cad7705c6ceeaac9
+guid: 4a7fb85e922262547a6c33dc83c36e27
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,78 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: levelup_Frame_0
+  - name: button_Frame_0
     originalName: 
-    pivot: {x: 0.99999994, y: -0.85714287}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 84
-      width: 11
-      height: 7
-    spriteID: 234751882d8958547a242bc3eac0364c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 84}
-  - name: levelup_Frame_1
-    originalName: 
-    pivot: {x: 0.5416666, y: -0.33333334}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 61
-      width: 24
-      height: 15
-    spriteID: 55eb620d9ad76414eb9d2ff35030d4d4
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 61}
-  - name: levelup_Frame_2
-    originalName: 
-    pivot: {x: 0.5, y: -0.31578946}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 34
-      width: 26
-      height: 19
-    spriteID: 4d5a07d91a192b8459f52ba0c8cae30d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 34}
-  - name: levelup_Frame_3
-    originalName: 
-    pivot: {x: 0.48000002, y: -0.3181818}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 25
-      height: 22
-    spriteID: a1bad9a4675172a47924d573178f10ae
+      width: 65
+      height: 25
+    spriteID: 99ed4b08607069b47a5e7f942be0434a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -201,18 +141,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: levelup_Frame_4
+  - name: button_Frame_1
     originalName: 
-    pivot: {x: 0.39999998, y: -0.64705884}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 37
-      y: 4
-      width: 20
-      height: 17
-    spriteID: cb39fa899eb65aa46888c7e465f3c562
+      x: 4
+      y: 37
+      width: 65
+      height: 25
+    spriteID: 0d752a09433ca1243811c7e108baf973
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -220,88 +160,36 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 37, y: 4}
-  - name: levelup_Frame_5
-    originalName: 
-    pivot: {x: 0.6111111, y: -0.47368422}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 38
-      y: 34
-      width: 18
-      height: 19
-    spriteID: 61012e83d2cc22f4086ab55ddab7d2b6
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 38, y: 34}
+    uvTransform: {x: 4, y: 37}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -89503529
-    name: levelup
+    guid: 1240155190
+    name: button
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: levelup_Frame_0
+    - name: button_Frame_0
       frameIndex: 0
       cellRect:
-        x: 3
-        y: 6
-        width: 11
-        height: 7
-      spriteId: 234751882d8958547a242bc3eac0364c
-    - name: levelup_Frame_1
+        x: 0
+        y: 0
+        width: 65
+        height: 25
+      spriteId: 99ed4b08607069b47a5e7f942be0434a
+    - name: button_Frame_1
       frameIndex: 1
       cellRect:
-        x: 1
-        y: 5
-        width: 24
-        height: 15
-      spriteId: 55eb620d9ad76414eb9d2ff35030d4d4
-    - name: levelup_Frame_2
-      frameIndex: 2
-      cellRect:
-        x: 1
-        y: 6
-        width: 26
-        height: 19
-      spriteId: 4d5a07d91a192b8459f52ba0c8cae30d
-    - name: levelup_Frame_3
-      frameIndex: 3
-      cellRect:
-        x: 2
-        y: 7
-        width: 25
-        height: 22
-      spriteId: a1bad9a4675172a47924d573178f10ae
-    - name: levelup_Frame_4
-      frameIndex: 4
-      cellRect:
-        x: 6
-        y: 11
-        width: 20
-        height: 17
-      spriteId: cb39fa899eb65aa46888c7e465f3c562
-    - name: levelup_Frame_5
-      frameIndex: 5
-      cellRect:
-        x: 3
-        y: 9
-        width: 18
-        height: 19
-      spriteId: 61012e83d2cc22f4086ab55ddab7d2b6
+        x: 0
+        y: 0
+        width: 65
+        height: 25
+      spriteId: 0d752a09433ca1243811c7e108baf973
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 28, y: 34}
+  canvasSize: {x: 65, y: 25}

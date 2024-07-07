@@ -34,10 +34,11 @@ public class PlayerAttribute : MonoBehaviour
     public delegate void OnGainExpType(PlayerAttribute who);
     public OnGainExpType on_gain_exp;
 
-    private void Start()
-    {
+    Tween tween;
+    private void Start() {
         ToNextLevelEXP = get_next_level_exp(Level);
         levelUpAnimator = transform.Find("LevelUp").GetComponent<Animator>();
+        tween = gameObject.AddComponent<Tween>();
     }
 
     int get_next_level_exp(int level)
@@ -93,6 +94,11 @@ public class PlayerAttribute : MonoBehaviour
             {
                 HP = MAXHP;
             }
+            tween.Clear();
+            tween.AddTween((float a) => {
+                GetComponent<SpriteRenderer>().material.SetFloat("_red_ratio", a);
+            }, 1, 0, 0.3f, Tween.TransitionType.QUAD, Tween.EaseType.OUT);
+            tween.Play();
         }
     }
 }
