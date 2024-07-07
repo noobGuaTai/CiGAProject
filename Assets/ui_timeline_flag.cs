@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ui_timeline_flag : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ui_timeline_flag : MonoBehaviour
     private RectTransform rectTransform;
     private Vector3 initTransform;
     private Coroutine moveRightCoroutine;
+    public Tween tween;
 
     void Awake()
     {
@@ -24,7 +26,30 @@ public class ui_timeline_flag : MonoBehaviour
 
     void Start()
     {
+        GetComponent<Image>().material.SetFloat("_white_ratio", 0);
         player.GetComponent<PlayerMove>().OnPlayerChangeState += ResetMove;
+        tween = gameObject.AddComponent<Tween>();
+        for (int i = 0; i < 5; i++) {
+            tween.AddTween<float>((float a) => {
+                GetComponent<Image>().material.SetFloat("_white_ratio", a);
+            }, 1, 0, 1f, Tween.TransitionType.QUART, Tween.EaseType.OUT);
+        }
+        tween.clearWhenEnd = false;
+        var gm = globalManager.GetComponent<GlobalManager>();
+        gm.on_last_5_begin += () => {
+            tween.Play();
+        };
+        gm.on_enter_next_timeslice += () => {
+            tween.Stop();
+        };
+    }
+
+    void on_last_5_begin() {
+        tween.Play();
+    }
+
+    void on_enter_next_timeslice() {
+        tween.Stop();
     }
 
     void Update()

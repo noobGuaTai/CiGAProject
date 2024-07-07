@@ -62,6 +62,7 @@ public class GlobalManager : MonoBehaviour
     private int directionIndex = 0;
     private Vector3[] directions;
 
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -79,6 +80,7 @@ public class GlobalManager : MonoBehaviour
         circleFieldVisual.SetActive(false);
         StartCoroutine(LoadSound("Effect"));
         StartCoroutine(LoadSound("BackgroundMusic"));
+       
     }
 
     public void StartGame()
@@ -94,6 +96,12 @@ public class GlobalManager : MonoBehaviour
         tileMap.transform.position = tileMapInitialPosition;
         circleFieldVisual.SetActive(true);
     }
+
+    public delegate void on_last_5_begin_type();
+    public on_last_5_begin_type on_last_5_begin;
+
+    public delegate void on_enter_next_timeslice_type();
+    public on_enter_next_timeslice_type on_enter_next_timeslice;
 
     void Update()
     {
@@ -112,8 +120,8 @@ public class GlobalManager : MonoBehaviour
                 {
                     PlaySound(audioSource2, "CountDown");
                     isPlayCountDown = true;
+                    on_last_5_begin.Invoke();
                 }
-
             }
             else
             {
@@ -243,6 +251,7 @@ public class GlobalManager : MonoBehaviour
             // enemySpawnInterval = enemySpawnInterval > 0.1f ? enemySpawnInterval - 0.1f : enemySpawnInterval;
             // player.GetComponent<PlayerMove>().moveSpeed += 2;
         }
+        on_enter_next_timeslice.Invoke();
     }
 
     IEnumerator SmoothScaleCircleField(float radiusChange, float duration)
