@@ -30,6 +30,7 @@ public class PlayerMove : MonoBehaviour
     public delegate void OnPlayerChangeStateType(PlayerMove who);
     public OnPlayerChangeStateType OnPlayerChangeState;
     private Animator changeStateAnimator;
+    private Animator smokeAnimator;
 
     void Start()
     {
@@ -38,6 +39,7 @@ public class PlayerMove : MonoBehaviour
         playerAttribute = GetComponent<PlayerAttribute>();
         playerState = PlayerState.infiniteMove;
         changeStateAnimator = transform.Find("ChangeState").GetComponent<Animator>();
+        smokeAnimator = transform.Find("SpawnEXP").GetComponent<Animator>();
     }
 
 
@@ -142,6 +144,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetButtonDown("ChangeState") && canChangeState)
         {
+            smokeAnimator.Play("smoke");
             if (playerState == PlayerState.infiniteMove)
             {
                 playerAttribute.ATK += 1;
