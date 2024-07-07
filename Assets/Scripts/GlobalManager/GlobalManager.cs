@@ -52,6 +52,7 @@ public class GlobalManager : MonoBehaviour
     public AudioSource audioSource2;// 倒计时音效
     public AudioSource audioSource3;// 射击音效/子弹耗尽音效
     public AudioSource audioSource4;// 捡起道具音效
+    public AudioSource audioSource5;// 升级音效
     public bool isPlayCountDown = false;
 
     private Vector3 tileMapInitialPosition;
@@ -100,7 +101,7 @@ public class GlobalManager : MonoBehaviour
                 ReStartNextTimeSlice();
             }
             groundTime = groundTotalTime - (Time.time - groundStartTime);
-            if (groundTime <= 5)
+            if (groundTime <= 5.2f)
             {
                 player.GetComponent<PlayerMove>().canChangeState = true;
                 if (!isPlayCountDown)
@@ -131,15 +132,16 @@ public class GlobalManager : MonoBehaviour
     {
         while (isStart)
         {
-            if(isStart && ememyLive < get_max_enemy())
+            if (isStart && ememyLive < get_max_enemy())
                 SpawnEnemy();
             yield return new WaitForSeconds(enemySpawnInterval);
-            
+
         }
     }
 
 
-    int get_max_enemy() {
+    int get_max_enemy()
+    {
         return (int)Unity.Mathematics.math.pow(timeSlice, 1.5) + timeSlice + 2;
     }
 
@@ -159,7 +161,8 @@ public class GlobalManager : MonoBehaviour
         ememyLive++;
     }
 
-    public void on_enemy_dead(EnemyMove who) {
+    public void on_enemy_dead(EnemyMove who)
+    {
         ememyLive--;
     }
 
@@ -230,13 +233,27 @@ public class GlobalManager : MonoBehaviour
         timeFlag.GetComponent<ui_timeline_flag>().ResetMove();
         // if (timeSlice % 2 == 0)// 每2次时间片就增加一次难度
         {
-            float localScaleX = circleField.GetComponent<CircleField>().transform.localScale.x;
-            float localScaleY = circleField.GetComponent<CircleField>().transform.localScale.y;
-            circleField.GetComponent<CircleField>().transform.localScale = new Vector3(localScaleX - 50, localScaleY - 50, circleField.GetComponent<CircleField>().transform.localScale.z);
-            // enemyHP += 5;
-            enemySpawnInterval = enemySpawnInterval > 0.1f ? enemySpawnInterval - 0.1f : enemySpawnInterval;
-            player.GetComponent<PlayerMove>().moveSpeed += 2;
+            StartCoroutine(SmoothScaleCircleField(new Vector3(-50, -50, 0), 5f));
+            // enemySpawnInterval = enemySpawnInterval > 0.1f ? enemySpawnInterval - 0.1f : enemySpawnInterval;
+            // player.GetComponent<PlayerMove>().moveSpeed += 2;
         }
+    }
+
+    IEnumerator SmoothScaleCircleField(Vector3 scaleChange, float duration)
+    {
+        Vector3 initialScale = transform.localScale;
+        Vector3 targetScale = initialScale + scaleChange;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.localScale = Vector3.Lerp(initialScale, targetScale, elapsedTime / duration);
+            yield return null;
+        }
+
+        // 确保最终缩放精确
+        transform.localScale = targetScale;
     }
 
     public void ResetGame()

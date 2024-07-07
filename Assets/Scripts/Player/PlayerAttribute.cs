@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -22,6 +23,7 @@ public class PlayerAttribute : MonoBehaviour
     public float underAttackTime = 0f;
     public GameObject globalManager;
     public float underAttackInterval = 1f;
+    public GameObject levelUI;
 
     private float lastUnderAttackTime = 0f;
     private Animator levelUpAnimator;
@@ -44,13 +46,18 @@ public class PlayerAttribute : MonoBehaviour
             EXP -= ToNextLevelEXP;
             Level += 1;
             ToNextLevelEXP = get_next_level_exp(Level);
+            if(Level % 2 == 0)
+                ATK += 1;
+            GetComponent<PlayerMove>().moveSpeed += 2;
             levelUpAnimator.Play("LevelUp");
+            globalManager.GetComponent<GlobalManager>().PlaySound(globalManager.GetComponent<GlobalManager>().audioSource5, "LevelUp");
         }
         on_gain_exp.Invoke(this);
     }
 
     void Update()
     {
+        levelUI.GetComponent<TextMeshProUGUI>().text = Level.ToString();
         if (!isInCircleField)
         {
             if (Time.time - underAttackTime > circleFieldAttackInterval)
@@ -58,10 +65,9 @@ public class PlayerAttribute : MonoBehaviour
                 ChangeHP(-circleField.GetComponent<CircleField>().ATK);
                 underAttackTime = Time.time;
             }
-
         }
     }
-
+    
     public void ChangeHP(int value)
     {
         if (Time.time - lastUnderAttackTime > underAttackInterval)

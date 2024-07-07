@@ -1285,22 +1285,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3352922794966481032, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
+    - target: {fileID: 3305004253340376259, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.29992676
+      objectReference: {fileID: 0}
+    - target: {fileID: 3305004253340376259, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.6000061
       objectReference: {fileID: 0}
     - target: {fileID: 6106203934544759112, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
       propertyPath: m_Name
       value: GameUI
       objectReference: {fileID: 0}
-    - target: {fileID: 6106203934544759112, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7119060589629334401, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
       propertyPath: globalManager
       value: 
       objectReference: {fileID: 121079225}
+    - target: {fileID: 8528204149982706289, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.3999939
+      objectReference: {fileID: 0}
+    - target: {fileID: 8528204149982706289, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.19999695
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1309,6 +1317,11 @@ PrefabInstance:
 --- !u!224 &526123574 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2195017345079745480, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
+  m_PrefabInstance: {fileID: 526123573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &526123575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5579390950550610454, guid: e2d215e4b5ddba5489c60f3ebe1e3b04, type: 3}
   m_PrefabInstance: {fileID: 526123573}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &622829373
@@ -1362,7 +1375,7 @@ MonoBehaviour:
   tile_array: []
   tilemap: {fileID: 0}
   file_path: Player/GroundTiles
-  tile_probs: 14000000010000000100000001000000010000000100000001000000
+  tile_probs: 0a000000010000000100000001000000010000000100000001000000
 --- !u!483693784 &622829376
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -2555,7 +2568,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 0}
+  sharedProfile: {fileID: 11400000, guid: 429faf96d0a6e1d49b286230956ec9f6, type: 2}
 --- !u!1 &1141742735 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6206974674542609778, guid: 47933cd3840796148be3d6229725af8d, type: 3}
@@ -3951,6 +3964,7 @@ MonoBehaviour:
   underAttackTime: 0
   globalManager: {fileID: 121079225}
   underAttackInterval: 1
+  levelUI: {fileID: 526123575}
 --- !u!114 &6826466280349970269
 MonoBehaviour:
   m_ObjectHideFlags: 0

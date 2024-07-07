@@ -25,7 +25,7 @@ public class PlayerMove : MonoBehaviour
     private PlayerAttribute playerAttribute;
     private float shootTimer = 0f;
     public Animator animator;
-    
+
     public delegate void OnPlayerChangeStateType(PlayerMove who);
     public OnPlayerChangeStateType OnPlayerChangeState;
     private Animator changeStateAnimator;
@@ -91,25 +91,31 @@ public class PlayerMove : MonoBehaviour
 
     void FiniteMove()
     {
-        if (playerAttribute.endurance > 0)
+        if (playerAttribute.endurance == 0)
         {
-            Vector2 previousPosition = rb.position;
-            Vector2 newPosition = previousPosition + moveInput * moveSpeed * Time.fixedDeltaTime;
-            float distance = Vector2.Distance(previousPosition, newPosition);
-            if (playerAttribute.endurance < distance)
-            {
-                rb.velocity = Vector2.zero;
-                return;
-            }
-            rb.MovePosition(newPosition);
-            playerAttribute.endurance -= distance;
-
-            bool isMoving = moveInput.x != 0 || moveInput.y != 0;
-            if (isMoving)
-            {
-                transform.localScale = new Vector3(Mathf.Sign(moveInput.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            }
+            moveSpeed = 20;
         }
+        else
+        {
+            
+        }
+        Vector2 previousPosition = rb.position;
+        Vector2 newPosition = previousPosition + moveInput * moveSpeed * Time.fixedDeltaTime;
+        float distance = Vector2.Distance(previousPosition, newPosition);
+        if (playerAttribute.endurance < distance)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+        rb.MovePosition(newPosition);
+        playerAttribute.endurance -= distance;
+
+        bool isMoving = moveInput.x != 0 || moveInput.y != 0;
+        if (isMoving)
+        {
+            transform.localScale = new Vector3(Mathf.Sign(moveInput.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+
     }
 
     void Shoot()
