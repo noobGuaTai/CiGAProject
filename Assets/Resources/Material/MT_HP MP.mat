@@ -31,11 +31,11 @@ Material:
     m_Floats:
     - _hp_max: -70
     - _hp_min: -152
-    - _hp_ratio: 0.45454547
+    - _hp_ratio: 0.00020882233
     - _white_ratio: 0
     m_Colors:
-    - _hp_base_color: {r: 0, g: 0.1906985, b: 0.8726415, a: 0}
-    - _hp_light_color: {r: 0, g: 0.6591742, b: 1, a: 0}
+    - _hp_base_color: {r: 1, g: 0.55423945, b: 0, a: 0}
+    - _hp_light_color: {r: 1, g: 0.8674295, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2442352687143335911
 MonoBehaviour:

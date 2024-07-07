@@ -20,6 +20,7 @@ public class PlayerMove : MonoBehaviour
     public bool canChangeState = false;
     public GameObject globalManager;
     public GameObject bulletSet;
+    public GameObject potion;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -163,6 +164,23 @@ public class PlayerMove : MonoBehaviour
             }
             globalManager.GetComponent<GlobalManager>().ReStartNextTimeSlice();
             OnPlayerChangeState.Invoke(this);
+            for (int i = 0; i < 3; i++)
+            {
+                Vector3 randomPosition = GetRandomPointInCircle(transform.position, 100f);
+                Instantiate(potion, randomPosition, Quaternion.identity);
+            }
         }
+    }
+
+    Vector3 GetRandomPointInCircle(Vector3 center, float radius)
+    {
+        float angle = Random.Range(0f, Mathf.PI * 2);
+        float distance = Random.Range(70f, radius);
+        Vector3 randomPosition = new Vector3(
+            center.x + Mathf.Cos(angle) * distance,
+            center.y,
+            center.z + Mathf.Sin(angle) * distance
+        );
+        return randomPosition;
     }
 }

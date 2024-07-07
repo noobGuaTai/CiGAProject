@@ -160,7 +160,7 @@ public class GlobalManager : MonoBehaviour
 
     int get_max_enemy()
     {
-        return (int)Unity.Mathematics.math.pow(timeSlice, 1.5) + timeSlice + 1;
+        return (int)Unity.Mathematics.math.pow(timeSlice, 1.5) + 2;
     }
 
 

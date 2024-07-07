@@ -226,7 +226,7 @@ MonoBehaviour:
   gameUI: {fileID: 1497638822}
   gameOverPanel: {fileID: 182139258}
   bulletSet: {fileID: 1722884838}
-  timeSliceUI: {fileID: 0}
+  timeSliceUI: {fileID: 855410965}
   timeSliceTotalUI: {fileID: 1532804762}
   widthBorder: 800
   heightBorder: 500
@@ -2349,6 +2349,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &855410965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7975235283666781835, guid: 459087d632672704089d32e4e1262b90, type: 3}
+  m_PrefabInstance: {fileID: 2844212928069060436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &942472659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2423,7 +2428,7 @@ GameObject:
   - component: {fileID: 1019369651}
   - component: {fileID: 1019369650}
   m_Layer: 8
-  m_Name: SapwnEXP
+  m_Name: SpawnEXP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2485,7 +2490,7 @@ SpriteRenderer:
   m_SortingLayerID: 596775885
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2112040882, guid: 673580aaa028f9841b119f35d9ba0e21, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2493,7 +2498,7 @@ SpriteRenderer:
   m_Size: {x: 34, y: 33}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1019369651
@@ -3581,6 +3586,7 @@ MonoBehaviour:
   canChangeState: 0
   globalManager: {fileID: 121079225}
   bulletSet: {fileID: 1722884838}
+  potion: {fileID: 7151004024959247479, guid: 3439f096444b59e40a15b646267fdf5f, type: 3}
   animator: {fileID: 0}
 --- !u!1 &7476710637330405125
 GameObject:
